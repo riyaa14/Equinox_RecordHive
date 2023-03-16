@@ -4,8 +4,8 @@
     height:450px;
     border-radius: 1rem;
     padding:2rem;
-    margin: 0rem;
-    margin-left: 20px;
+    margin: auto;
+    margin-top: 30px;
 }
 
 @media only screen and (max-width: 620px) {
