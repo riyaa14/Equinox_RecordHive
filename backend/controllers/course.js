@@ -348,3 +348,98 @@ export const addStudentMarks = async (req, res) => {
     });
   }
 };
+
+
+
+//Course History ---admin
+export const getCourseHistory = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await User.findById(req.params.id).populate({
+      path: 'courseTrack',
+      populate: [
+        { path: 'course', select: 'name' },
+        { path: 'semesterId', select: 'semno' }
+      ]
+    });
+    //console.log(userId);
+
+    const courses = user.courseTrack.map((track) => ({
+      name: track.course.name,
+      semester: track.semesterId.semno,
+      marks: track.marks,
+      credits: track.creditSecured
+    }));
+
+    res.status(200).json({
+      success: true,
+      courses,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+
+
+//Generate Sem GPA--- admin
+export const getSGPA = async (req,res) => {
+  try{
+    
+    const student = await User.findById(req.params.id).populate({
+      path: 'courseTrack',
+      populate: {
+        path: 'course',
+        match: { semesterId: req.params.semeId }
+      }
+    });
+
+        if (!student) {
+          return res.status(404).json({ error: 'Student not found' });
+        }
+     
+      //console.log(student)
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const stack = [];
+
+ 
+  for (let i = student.courseTrack.length - 1; i >= 0; i--) {
+    const course = student.courseTrack[i].course;
+    const creditSecured = student.courseTrack[i].creditSecured;
+    const marks = student.courseTrack[i].marks;
+
+    stack.push({ course, creditSecured, marks });
+  }
+  //console.log(stack);
+
+  const totalCredits = student.courseTrack.reduce((total, course) => total + course.creditSecured, 0);
+  let gpa = 0;
+  while (stack.length > 0) {
+    const item = stack.pop();
+    const marks = item.marks;
+    const marksNumber = marksToNumber(marks);
+
+    gpa += (item.creditSecured / totalCredits) * marksNumber;
+  }
+
+    gpa = gpa.toFixed(2);
+
+    //console.log(gpa);
+
+    return res.status(200).json({
+        success: true,
+        sgpa: gpa,
+      });
+
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
