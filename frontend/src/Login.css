@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap');
+body {
+  margin: 0;
+  font-family:'poppins','sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.himanshi{
+  background: linear-gradient(113.32deg, rgba(180, 156, 226, 0.984) 0.73%, #6f19e1f0 58.72%, #6206e2f7 105.8%);
+  background-size: "cover";
+  background-repeat:no-repeat; 
+  justify-content: center;
+  display: flex;
+  min-height: 100vh;
+  align-items:center;
+}
