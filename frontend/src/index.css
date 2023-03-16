@@ -81,7 +81,7 @@ header a {
 }
 
 .main-content{
-  margin-left: 250px;
+  margin-left: 270px;
 }
 
 /* POP UP */
@@ -142,8 +142,8 @@ form.error {
   text-align: center;
   align-items: center;
   justify-content: center;
-  padding: 32px;
-  max-width: 640px;
+  padding: 40px;
+  max-width: 900px;
   background-color: #FFF;
 }
 

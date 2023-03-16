@@ -4,6 +4,7 @@ import NavBar from "./Components/NavBar";
 
 // pages
 import StudentRecords from "./Pages/StudentRecords";
+import TranscriptRequestTracker from "./Pages/TranscriptRequestTracker";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
 
         <Routes>
           <Route path="/" element=<StudentRecords /> />
+          <Route path="/Transcripts" element=<TranscriptRequestTracker /> />
         </Routes>
       </BrowserRouter>
     </div>

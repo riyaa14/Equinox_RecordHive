@@ -18,6 +18,9 @@ const StudentForm = (props) => {
           <label>ENROLLMENT NUMBER:</label>
           <input type="text" />
 
+          <label>EMAIL ID</label>
+          <input type="text" />
+
           <label>YEAR</label>
           <input type="text" />
 
