@@ -8,28 +8,16 @@ import TranscriptRequestTracker from "./Pages/TranscriptRequestTracker";
 import LoginForm from "./Components/Loginform/Loginform";
 
 function App() {
+  const location = useLocation();
   return (
-    <BrowserRouter>
+    <>
+      {location.pathname !== "/login" && <NavBar />}
       <Routes>
-        <Route path="/Login" element={<LoginForm />} />
-        <Route
-          path="/"
-          element={
-            <NavBar>
-              <StudentRecords />
-            </NavBar>
-          }
-        />
-        <Route
-          path="/Transcripts"
-          element={
-            <NavBar>
-              <TranscriptRequestTracker />
-            </NavBar>
-          }
-        />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/" element={<StudentRecords />} />
+        <Route path="/Transcripts" element={<TranscriptRequestTracker />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
