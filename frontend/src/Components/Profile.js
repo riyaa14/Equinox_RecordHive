@@ -1,31 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-const { useState } = require("react");
+import EditableField from "./EditableField";
 
 const Profile = (props) => {
   return props.trigger ? (
     <div className="details">
       <div className="details-inner">
-        <form className="create">
-          <button className="close-btn" onClick={() => props.setTrigger(false)}>
-            close
-          </button>
-          <h3>ADD A NEW STUDENT</h3>
+        <button
+          className="edit-course-marks"
+          onClick={() => props.setTrigger(false)}
+        >
+          close
+        </button>
+        <h3>STUDENT DETAILS</h3>
 
-          <label>FULL NAME:</label>
-          <input type="text" />
+        <EditableField label="name" value="Riya" />
 
-          <label>ENROLLMENT NUMBER:</label>
-          <input type="text" />
+        <EditableField label="enroll no" value="00901022021" />
 
-          <label>YEAR</label>
-          <input type="text" />
+        <EditableField label="branch" value="ECE" />
 
-          <label>BRANCH</label>
-          <input type="text" />
+        <EditableField label="Semester" value="4th" />
 
-          <button>ADD STUDENT RECORD</button>
-        </form>
+        <EditableField label="email" value="riyagarg@gmail.com" />
       </div>
     </div>
   ) : (

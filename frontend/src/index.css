@@ -32,6 +32,134 @@ header a {
   margin: 0 auto;
 }
 
+/* SIDE BAR */
+.profile-heading{
+  color: #ffffff;
+  text-align: right;
+  top:10%;
+}
+.sidebar {
+  background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25)); /* black background color */
+  width: 15.625rem; /* width of the sidebar */
+  height: 97%; /* height of the sidebar */
+  position: fixed; /* make the sidebar fixed */
+  top: 2%; /* align the top of the sidebar to the top of the page */
+  left: 1%; /* align the left of the sidebar to the left of the page */
+  bottom:1%;
+  border-radius: 0.75rem; /* rounded radius for the bottom right corner */
+  background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+  transition: left 0.5s ease;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    left: -200px; /* move the sidebar to the left by the width of the sidebar */
+  }
+}
+
+.profile-option,
+.generate-option,
+.request-option {
+  position: relative;
+  color: #ffffff; /* white text color */
+  padding: 24px 32px 8px;
+  text-align: left;
+  font-size: 16px; /* set the font size of the options */
+  cursor: pointer; /* add a pointer cursor to the options */
+  transition: background-color 0.3s ease; /* add transition property */
+  border-radius: 7px; /* add rounded corners */
+  padding: 8px 12px; /* reduce padding to make the box smaller */
+  width:200px;
+  
+  margin: 1.09375rem ;
+}
+
+
+.profile-option:hover,
+.generate-option:hover,
+.request-option:hover {
+  background-color: rgba(128, 128, 128, 0.5);; /* change the background color of the option on hover */
+  color: #ffffff; /* change the text color of the option on hover */
+  transition: color 0.3s ease;
+  border-radius: 7px; /* add rounded corners */
+  padding: 8px 12px; /* reduce padding to make the box smaller */
+  width:200px;
+}
+
+.profile-option:hover,
+.generate-option:hover,
+.request-option:hover,
+.profile-option:hover *:not(.sidebar-icon),
+.generate-option:hover *:not(.sidebar-icon),
+.request-option:hover *:not(.sidebar-icon) {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.profile h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.button-icon i {
+  font-size: 24px;
+}
+.option-left{
+  margin-left: 50px;
+}
+.atag{
+  text-decoration: none;
+  color:#ffffff;
+}
+#selectedbutton{
+ /* background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232)); change the background color of the option on hover */
+  color: #ffffff; /* change the text color of the option on hover */
+  transition: color 0.3s ease;
+  border-radius: 7px; /* add rounded corners */
+  padding: 8px 12px; /* reduce padding to make the box smaller */
+  width:200px;
+  
+}
+#logoutbutton{
+  background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232)); /* change the background color of the option on hover */
+  color: #ffffff; /* change the text color of the option on hover */
+  transition: color 0.3s ease;
+  border-radius: 7px; /* add rounded corners */
+  padding: 11px 7px; /* reduce padding to make the box smaller */
+  width:200px;
+  top:84%;
+  text-align: center;
+  font-weight: bold;
+  position: fixed;
+}
+.divider {
+  
+    border-top: 0px solid rgba(0, 0, 0, 0.08);
+    border-right: 0px solid rgba(0, 0, 0, 0.08);
+    border-left: 0px solid rgba(0, 0, 0, 0.08);
+    height: 0.0625rem;
+    margin: 1rem 0px;
+    border-bottom: none;
+    opacity: 0.25;
+    background-color: transparent;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255), rgba(255, 255, 255, 0)) !important;
+}
+
 /* homepage */
 .home {
   display: grid;
@@ -81,7 +209,7 @@ header a {
 }
 
 .main-content{
-  margin-left: 270px;
+  margin-left: 300px;
 }
 
 /* POP UP */
@@ -219,6 +347,18 @@ form.error {
   margin: 4px;
 }
 
+.edit-component-button{
+  display: inline;
+  background: rgb(230, 228, 228);
+  border: 0;
+  color: #000000;
+  padding: 10px;
+  font-family: "Poppins";
+  cursor: pointer;
+  position: relative;
+  margin: 10px;
+}
+
 .close-course-history{
   background: var(--primary);
   border: 0;
@@ -262,3 +402,25 @@ form.error {
   right: 16px;
   margin: 4px;
 }
+
+/* TRANSCRIPT REQUESTS -- ADMIN SIDE */
+
+.transcript-requests-cards {
+  background: #fff;
+  border-radius: 4px;
+  margin: 50px 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.transcript-requests-cards h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.transcript-requests-cards p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+

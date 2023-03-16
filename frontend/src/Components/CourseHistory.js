@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CardCourses from "./CardCourses";
-const { useState } = require("react");
 
 const CourseHistory = (props) => {
   return props.trigger ? (

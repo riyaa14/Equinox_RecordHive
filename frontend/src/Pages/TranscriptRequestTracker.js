@@ -7,7 +7,7 @@ function StudentRecords() {
   return (
     <div className="main-content">
       <div className="home">
-        <div className="students">
+        <div>
           <TranscriptCards />
           <TranscriptCards />
           <TranscriptCards />
