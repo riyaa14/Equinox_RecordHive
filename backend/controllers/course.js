@@ -318,6 +318,7 @@ export const addStudentMarks = async (req, res) => {
       courses: courseId,
     });
 
+    //console.log(graduationReqt);
     if (graduationReqt && user.courseTrack[courseIndex].creditSecured >= graduationReqt.creditsRequired) {
       const graduationTracker = await GraduationTracker.findOne({
         studentId: userId,

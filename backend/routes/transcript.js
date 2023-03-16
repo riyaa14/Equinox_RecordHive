@@ -8,11 +8,11 @@ import { isAuthenticated, isAuthenticatedStudent, isAuthenticatedAdmin } from ".
 
 const router = express.Router();
 
-router.post("/unofficial/:semesterId", isAuthenticatedStudent, generateUnofficialTranscript);
+router.post("/unofficial/:semId", isAuthenticatedStudent, generateUnofficialTranscript);
 
-router.post("/request/official", isAuthenticatedStudent, requestOfficialTranscript);
+router.post("/request/official/:semesterId", isAuthenticatedStudent, requestOfficialTranscript);
 
-router.get("/student/transcripts", isAuthenticatedAdmin, getStudentTranscripts);
+router.get("/student/trans/:id", getStudentTranscripts);
 
 
 

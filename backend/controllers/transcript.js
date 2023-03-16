@@ -12,14 +12,19 @@ import path from 'path';
 export const generateUnofficialTranscript = async (req,res) => {
     try{
       
-        const student = await User.findById(req.user.id).populate({
-            path: 'courseTrack.course',
-            match: { semesterId: req.params.semesterId }, // Filter by selected semester
-          });
+      const student = await User.findById(req.user.id).populate({
+        path: 'courseTrack',
+        populate: {
+          path: 'course',
+          match: { semesterId: req.params.semeId }
+        }
+      });
 
           if (!student) {
             return res.status(404).json({ error: 'Student not found' });
           }
+       
+        //console.log(student)
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     const stack = [];
 
@@ -31,7 +36,7 @@ export const generateUnofficialTranscript = async (req,res) => {
 
       stack.push({ course, creditSecured, marks });
     }
-    console.log(stack);
+    //console.log(stack);
 
     const totalCredits = student.courseTrack.reduce((total, course) => total + course.creditSecured, 0);
     let gpa = 0;
@@ -65,7 +70,8 @@ export const generateUnofficialTranscript = async (req,res) => {
 
     
     const fileName = `${student.name.replace(' ', '_')}_transcript.pdf`;
-    const filePath = path.join(__dirname, '..', 'public', 'pdf', fileName);
+   //const filePath = path.join(__dirname, '..', 'public', 'pdf', fileName);
+   const filePath = 'C:/Users/deepak kumar/OneDrive/Documents/GitHub/SMP/public/pdf/';
 
     
     res.setHeader('Content-Type', 'application/pdf');
@@ -86,7 +92,7 @@ export const generateUnofficialTranscript = async (req,res) => {
     doc.moveDown();
     for (let i = 0; i < student.courseTrack.length; i++) {
       const item = student.courseTrack[i];
-      doc.fontSize(12).text(`${i + 1}. ${item.course.name} (${item.course.code}) - ${item.grade} - ${item.marks}`);
+      doc.fontSize(12).text(`${i + 1}. ${item.course.name} (${item.course.code}) - ${item.marks}`);
       doc.moveDown();
     }
 

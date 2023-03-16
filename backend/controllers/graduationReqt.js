@@ -7,8 +7,9 @@ import ApiFeatures from "../utils/apiFeatures.js";
 //Create Graduation Requirement 
 export const createGR = async (req,res) => {
     try{
+      //console.log(req.body);
       const newGRData = {
-        name: req.user.name,
+        name: req.body.name,
         creditsRequired: req.body.creditsRequired,
         courses: req.body.courses,
       };
