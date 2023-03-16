@@ -31,7 +31,9 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
-
+h6{
+  font-weight: normal;
+}
 /* SIDE BAR */
 .profile-heading{
   color: #ffffff;
@@ -40,7 +42,7 @@ header a {
 }
 .sidebar {
   background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25)); /* black background color */
-  width: 15.625rem; /* width of the sidebar */
+  width: 15.726rem; /* width of the sidebar */
   height: 97%; /* height of the sidebar */
   position: fixed; /* make the sidebar fixed */
   top: 2%; /* align the top of the sidebar to the top of the page */

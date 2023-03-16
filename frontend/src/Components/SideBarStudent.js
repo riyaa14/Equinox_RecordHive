@@ -53,7 +53,7 @@ function Sidebar() {
         <span className="button-icon">
           <i className="fa fa-file-text" style={{ fontSize: '18px' }}></i>
         </span>
-        <span style={{ marginLeft: '25px' }}>
+        <span style={{ marginLeft: '23px' }}>
           <Link to="/generate" className="atag">
             Generate Transcript
           </Link>
