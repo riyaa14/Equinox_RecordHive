@@ -6,14 +6,13 @@ import NavBar from "./Components/NavBar";
 import StudentRecords from "./Pages/StudentRecords";
 import TranscriptRequestTracker from "./Pages/TranscriptRequestTracker";
 import StudentProfile from "./Pages/StudentProfile";
-import TranscriptRequestSubmit from "./Pages/TranscriptRequestSubmit";
 import LoginForm from "./Components/Loginform/Loginform";
 import Sidebar from "./Components/SideBarAdminSide";
 import CourseRecords from "./Pages/CourseRecords";
 import SemesterRecords from "./Pages/SemesterRecords";
 import Dashboard from "./Pages/Dashboard";
-import Request from "./Pages/Request";
-import Generate from "./Pages/Generate";
+import TranscriptRequestSubmit from "./Pages/TranscriptRequestSubmit";
+import TranscriptGenerate from "./Pages/TranscriptGenerate";
 function App() {
   const location = useLocation();
   return (
@@ -22,14 +21,13 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/StudentRecords" element={<StudentRecords />} />
+        <Route path="/CourseRecords" element={<CourseRecords />} />
+        <Route path="/SemesterRecords" element={<SemesterRecords />} />
         <Route path="/Transcripts" element={<TranscriptRequestTracker />} />
+        <Route path="/StudentProfile" element={<StudentProfile />} />
         <Route path="/request" element={<TranscriptRequestSubmit />} />
-        <Route path="/course" element={<CourseRecords />} />
-        <Route path="/semester" element={<SemesterRecords />} />
-        <Route path="/profile" element={<StudentProfile />} />
-        <Route path="/dashboard" element={<Dashboard/>}/>
-        <Route path="/generate" element={<Generate/>}/>
-        <Route path="/request" element={<Request/>} />
+        <Route path="/generate" element={<TranscriptGenerate />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );
