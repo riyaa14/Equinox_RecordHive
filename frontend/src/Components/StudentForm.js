@@ -92,7 +92,7 @@ const StudentForm = (props) => {
             onChange={(e) => {
               setbranch(e.target.value);
             }}
-            value={graduation_year}
+            value={branch}
           />
           {err && <div className="error">{err}</div>}
           <button>ADD STUDENT RECORD</button>

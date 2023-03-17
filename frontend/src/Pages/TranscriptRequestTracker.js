@@ -20,7 +20,7 @@ function TranscriptRecords() {
       );
       const json = await response.json();
       if (response.ok) {
-        setTransRecords(json);
+        setTransRecords(json.transcript);
       }
     };
     fetchRecords();
@@ -30,7 +30,7 @@ function TranscriptRecords() {
     <div className="main-content">
       <div className="home">
         <div>
-          {TransRecords &&
+          {TransRecords && TransRecords.length > 0 ? (
             TransRecords.map((trans) => {
               return (
                 <TranscriptCards
@@ -41,7 +41,10 @@ function TranscriptRecords() {
                   message={trans.message}
                 />
               );
-            })}
+            })
+          ) : (
+            <h3 style={{ color: "black" }}>No Transcript yet</h3>
+          )}
         </div>
       </div>
     </div>

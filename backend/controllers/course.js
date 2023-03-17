@@ -4,124 +4,117 @@ import GraduationTracker from "../models/GraduationTracker.js";
 import GraduationReqt from "../models/GraduationReqt.js";
 import ApiFeatures from "../utils/apiFeatures.js";
 
-
-
 //Create Course --- admin
-export const createCourse = async (req,res) => {
-    try{
-      const newCourseData = {
-        desc: req.body.desc,
-        name: req.body.name,
-        code: req.body.code,
-        credit: req.body.credit,
-      };
-  
-      const course = await Course.create(newCourseData);
-  
-      res.status(201).json({
-        success: true,
-        message: "Course created",
-        course
-      });
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: error.message,
-      });
-    }
+export const createCourse = async (req, res) => {
+  try {
+    const newCourseData = {
+      desc: req.body.desc,
+      name: req.body.name,
+      code: req.body.code,
+      credit: req.body.credit,
+    };
+
+    const course = await Course.create(newCourseData);
+
+    res.status(201).json({
+      success: true,
+      message: "Course created",
+      course,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
-
-
-
 
 //Delete Course ---admin
-export const deleteCourse = async (req,res) => {
-    try {
-        const course = await Course.findById(req.params.courseId);
-    
-        if (!course) {
-          return res.status(404).json({
-            success: false,
-            message: "Course not found",
-          });
-        }
-    
-        await course.remove();
-    
-        res.status(200).json({
-          success: true,
-          message: "Course deleted",
-        });
-    } catch (error) {
-        res.status(500).json({
-          success: false,
-          message: error.message,
-        });
+export const deleteCourse = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: "Course not found",
+      });
     }
+
+    await course.remove();
+
+    res.status(200).json({
+      success: true,
+      message: "Course deleted",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
-
-
 
 //Edit Course Details --- admin
 export const updateCourse = async (req, res) => {
-    try {
-        const course = await Course.findById(req.params.courseId);
-    
-        const { desc, name , code, credit } = req.body;
+  try {
+    const course = await Course.findById(req.params.courseId);
 
-        if (!course) {
-            return res.status(404).json({
-              success: false,
-              message: "Course not found",
-            });
-        }
-    
-        if (desc) {
-          course.desc = desc;
-        }
-        if (name) {
-          course.name = name;
-        }
-        if (code) {
-            course.code = code;
-        }
-        if (credit) {
-          course.credit = credit;
-        }
+    const { desc, name, code, credit } = req.body;
 
-        await course.save();
-        res.status(200).json({
-          success: true,
-          message: "Course Edited",
-          post
-        });
-    } catch (error) {
-        res.status(500).json({
-          success: false,
-          message: error.message,
-        });
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: "Course not found",
+      });
     }
-};
 
+    if (desc) {
+      course.desc = desc;
+    }
+    if (name) {
+      course.name = name;
+    }
+    if (code) {
+      course.code = code;
+    }
+    if (credit) {
+      course.credit = credit;
+    }
+
+    await course.save();
+    res.status(200).json({
+      success: true,
+      message: "Course Edited",
+      post,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 //GetAll Courses --- admin
-export const getallCourses= async (req,res)=>{
-    const apiFeatures = new ApiFeatures(Course.find(), req.query).search().filter();
-    try{
-      const courses = await apiFeatures.query;
-        //const users = await User.find();
-        res.status(200).json({
-          success: true,
-          courses,
-        });
-    } catch (error) {
-        res.status(500).json({
-          success: false,
-          message: error.message,
-        });
-    }
+export const getallCourses = async (req, res) => {
+  const apiFeatures = new ApiFeatures(Course.find(), req.query)
+    .search()
+    .filter();
+  try {
+    const courses = await apiFeatures.query;
+    //const users = await User.find();
+    res.status(200).json({
+      success: true,
+      courses,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
-
 
 //Get Single Course ---admin
 export const getCourse = async (req, res) => {
@@ -145,20 +138,21 @@ export const getCourse = async (req, res) => {
   }
 };
 
-
 //add course to student's course track
 export const addCourse = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const course = await Course.findById(req.params.courseId);
 
-    const courseIndex = user.courseTrack.findIndex(c => c.course.toString() === req.params.courseId);
+    const courseIndex = user.courseTrack.findIndex(
+      (c) => c.course.toString() === req.params.courseId
+    );
 
     if (courseIndex !== -1) {
-      return res.status(400).json({msg: 'Course already exists in student course track'});
+      return res
+        .status(400)
+        .json({ msg: "Course already exists in student course track" });
     }
-
-
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Add course to user's course track
@@ -166,15 +160,15 @@ export const addCourse = async (req, res) => {
       course: course._id,
       marks: 0,
       creditSecured: 0,
-      semesterId: req.body.semesterId
+      semesterId: req.body.semesterId,
     });
 
     await user.save();
 
     return res.status(200).json({
-        success: true,
-        res: user.courseTrack,
-      });
+      success: true,
+      res: user.courseTrack,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -182,27 +176,30 @@ export const addCourse = async (req, res) => {
     });
   }
 };
-
 
 //remove course from student's course track
 export const removeCourse = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
 
-const courseIndex = user.courseTrack.findIndex(c => c.course.toString() === req.params.courseId);
+    const courseIndex = user.courseTrack.findIndex(
+      (c) => c.course.toString() === req.params.courseId
+    );
 
-if (courseIndex === -1) {
-  return res.status(400).json({msg: 'Course does not exist in student course track'});
-}
+    if (courseIndex === -1) {
+      return res
+        .status(400)
+        .json({ msg: "Course does not exist in student course track" });
+    }
 
-user.courseTrack.splice(courseIndex, 1);
+    user.courseTrack.splice(courseIndex, 1);
 
-await user.save();
+    await user.save();
 
     return res.status(200).json({
-        success: true,
-        res: user.courseTrack,
-      });
+      success: true,
+      res: user.courseTrack,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -211,13 +208,13 @@ await user.save();
   }
 };
 
-
-
 //calculate gpa
 export const gpaCalc = async (req, res) => {
   try {
-    const user = await User.findById(req.params.sid).populate('courseTrack.course');
-    
+    const user = await User.findById(req.params.sid).populate(
+      "courseTrack.course"
+    );
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     const stack = [];
     let totalCredits = 0;
@@ -235,7 +232,7 @@ export const gpaCalc = async (req, res) => {
         });
 
         totalCredits += course.credit;
-        totalMarksPoints += (marksToNumber(marks) * course.credit);
+        totalMarksPoints += marksToNumber(marks) * course.credit;
       }
     }
 
@@ -250,11 +247,10 @@ export const gpaCalc = async (req, res) => {
 
     gpa = gpa.toFixed(2);
 
-
     return res.status(200).json({
-        success: true,
-        gpa: gpa,
-      });
+      success: true,
+      gpa: gpa,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -263,29 +259,27 @@ export const gpaCalc = async (req, res) => {
   }
 };
 function marksToNumber(marks) {
-    if (marks >= 90) {
-        return 10;
-      } else if (marks >= 80 && marks < 90) {
-        return 9;
-      } else if (marks >= 70 && marks < 80) {
-        return 8;
-      } else if (marks >= 60 && marks < 70) {
-        return 7;
-      } else if (marks >= 45 && marks < 60) {
-        return 6;
-      } else if (marks >= 40 && marks < 45) {
-        return 4;
-      } else {
-        return 0;
-      }
+  if (marks >= 90) {
+    return 10;
+  } else if (marks >= 80 && marks < 90) {
+    return 9;
+  } else if (marks >= 70 && marks < 80) {
+    return 8;
+  } else if (marks >= 60 && marks < 70) {
+    return 7;
+  } else if (marks >= 45 && marks < 60) {
+    return 6;
+  } else if (marks >= 40 && marks < 45) {
+    return 4;
+  } else {
+    return 0;
+  }
 }
-
-
 
 //add marks of student for each course
 export const addStudentMarks = async (req, res) => {
-    const { courseId, marks, creditSecured } = req.body;
-    const userId = req.params.sid;
+  const { courseId, marks, creditSecured } = req.body;
+  const userId = req.params.sid;
   try {
     const user = await User.findById(userId);
 
@@ -298,7 +292,9 @@ export const addStudentMarks = async (req, res) => {
       return res.status(404).json({ error: "Course not found" });
     }
 
-    const courseIndex = user.courseTrack.findIndex((course) => course.course.toString() === courseId);
+    const courseIndex = user.courseTrack.findIndex(
+      (course) => course.course.toString() === courseId
+    );
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     if (courseIndex >= 0) {
@@ -319,7 +315,11 @@ export const addStudentMarks = async (req, res) => {
     });
 
     //console.log(graduationReqt);
-    if (graduationReqt && user.courseTrack[courseIndex].creditSecured >= graduationReqt.creditsRequired) {
+    if (
+      graduationReqt &&
+      user.courseTrack[courseIndex].creditSecured >=
+        graduationReqt.creditsRequired
+    ) {
       const graduationTracker = await GraduationTracker.findOne({
         studentId: userId,
         graduationRequirementId: graduationReqt._id,
@@ -338,9 +338,9 @@ export const addStudentMarks = async (req, res) => {
     }
 
     return res.status(200).json({
-        success: true,
-        message: "Course marks added",
-      });
+      success: true,
+      message: "Course marks added",
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -349,19 +349,17 @@ export const addStudentMarks = async (req, res) => {
   }
 };
 
-
-
 //Course History ---admin
 export const getCourseHistory = async (req, res) => {
   try {
     const { userId } = req.params;
 
     const user = await User.findById(req.params.id).populate({
-      path: 'courseTrack',
+      path: "courseTrack",
       populate: [
-        { path: 'course', select: 'name' },
-        { path: 'semesterId', select: 'semno' }
-      ]
+        { path: "course", select: "name" },
+        { path: "semesterId", select: "semno" },
+      ],
     });
     //console.log(userId);
 
@@ -369,7 +367,7 @@ export const getCourseHistory = async (req, res) => {
       name: track.course.name,
       semester: track.semesterId.semno,
       marks: track.marks,
-      credits: track.creditSecured
+      credits: track.creditSecured,
     }));
 
     res.status(200).json({
@@ -384,58 +382,55 @@ export const getCourseHistory = async (req, res) => {
   }
 };
 
-
-
 //Generate Sem GPA--- admin
-export const getSGPA = async (req,res) => {
-  try{
-    
+export const getSGPA = async (req, res) => {
+  try {
     const student = await User.findById(req.params.id).populate({
-      path: 'courseTrack',
+      path: "courseTrack",
       populate: {
-        path: 'course',
-        match: { semesterId: req.params.semeId }
-      }
+        path: "course",
+        match: { semesterId: req.params.semeId },
+      },
     });
 
-        if (!student) {
-          return res.status(404).json({ error: 'Student not found' });
-        }
-     
-      //console.log(student)
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  const stack = [];
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
 
- 
-  for (let i = student.courseTrack.length - 1; i >= 0; i--) {
-    const course = student.courseTrack[i].course;
-    const creditSecured = student.courseTrack[i].creditSecured;
-    const marks = student.courseTrack[i].marks;
+    //console.log(student)
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const stack = [];
 
-    stack.push({ course, creditSecured, marks });
-  }
-  //console.log(stack);
+    for (let i = student.courseTrack.length - 1; i >= 0; i--) {
+      const course = student.courseTrack[i].course;
+      const creditSecured = student.courseTrack[i].creditSecured;
+      const marks = student.courseTrack[i].marks;
 
-  const totalCredits = student.courseTrack.reduce((total, course) => total + course.creditSecured, 0);
-  let gpa = 0;
-  while (stack.length > 0) {
-    const item = stack.pop();
-    const marks = item.marks;
-    const marksNumber = marksToNumber(marks);
+      stack.push({ course, creditSecured, marks });
+    }
+    //console.log(stack);
 
-    gpa += (item.creditSecured / totalCredits) * marksNumber;
-  }
+    const totalCredits = student.courseTrack.reduce(
+      (total, course) => total + course.creditSecured,
+      0
+    );
+    let gpa = 0;
+    while (stack.length > 0) {
+      const item = stack.pop();
+      const marks = item.marks;
+      const marksNumber = marksToNumber(marks);
+
+      gpa += (item.creditSecured / totalCredits) * marksNumber;
+    }
 
     gpa = gpa.toFixed(2);
 
     //console.log(gpa);
 
     return res.status(200).json({
-        success: true,
-        sgpa: gpa,
-      });
-
-
+      success: true,
+      sgpa: gpa,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
