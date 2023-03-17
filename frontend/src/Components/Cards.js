@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React from "react";
 import { useState, useEffect } from "react";
 import StudentForm from "../Components/StudentForm";
@@ -77,4 +75,3 @@ function Cards(props) {
 }
 
 export default Cards;
->>>>>>> bbfdd8c193d8903b3cf6ed2d260b12f2f2f0f49e
