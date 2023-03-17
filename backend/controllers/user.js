@@ -6,8 +6,7 @@ import ApiFeatures from "../utils/apiFeatures.js";
 import jwt from "jsonwebtoken";
 import cookie from "cookie";
 
-
-//Register 
+//Register
 export const register = async (req, res) => {
   try {
     const { name, email, password, enrollNo, role } = req.body;
@@ -24,12 +23,12 @@ export const register = async (req, res) => {
       email,
       password,
       enrollNo,
-      role
+      role,
     });
 
     res.status(201).json({
       success: true,
-      user
+      user,
     });
   } catch (error) {
     res.status(500).json({
@@ -39,12 +38,10 @@ export const register = async (req, res) => {
   }
 };
 
-
 //Register--student(by admin)
 export const registerS = async (req, res) => {
   try {
-    const { name, email, password, enrollNo, branch, graduation_year } = req.body;
-    
+    const { name, email, enrollNo, branch, graduation_year } = req.body;
 
     let user = await User.findOne({ enrollNo });
     if (user) {
@@ -56,16 +53,16 @@ export const registerS = async (req, res) => {
     user = await User.create({
       name,
       email,
-      password,
+      password: "igdtuw123",
       enrollNo,
       branch,
       graduation_year,
-      role: "Student"
+      role: "Student",
     });
 
     res.status(201).json({
       success: true,
-      user
+      user,
     });
   } catch (error) {
     res.status(500).json({
@@ -74,7 +71,6 @@ export const registerS = async (req, res) => {
     });
   }
 };
-
 
 // WhoAmI
 export const whoami = async (req, res) => {
@@ -90,12 +86,10 @@ export const whoami = async (req, res) => {
         message: "Please login first",
       });
     }
-    const token = cookie
-      .split(";")
-      .find((c) => c.trim().startsWith("smp="));
+    const token = cookie.split(";").find((c) => c.trim().startsWith("smp="));
 
-      //console.log(token);
-      if (!token) {
+    //console.log(token);
+    if (!token) {
       return res.status(401).json({
         success: false,
         error: "Who are you? You Degenerate at token 1",
@@ -129,8 +123,6 @@ export const whoami = async (req, res) => {
   }
 };
 
-
-
 //Login
 export const login = async (req, res) => {
   try {
@@ -139,8 +131,7 @@ export const login = async (req, res) => {
     res.set("Access-Control-Allow-Credentials", "true");
     //res.setHeader("Access-Control-Allow-Credentials", true);
 
-    const user = await User.findOne({ enrollNo })
-      .select("+password")
+    const user = await User.findOne({ enrollNo }).select("+password");
 
     if (!user) {
       return res.status(400).json({
@@ -181,7 +172,7 @@ export const login = async (req, res) => {
     res.json({
       success: true,
       message: "Login success",
-      user
+      user,
     });
   } catch (error) {
     res.status(500).json({
@@ -190,8 +181,6 @@ export const login = async (req, res) => {
     });
   }
 };
-
-
 
 //Logout
 export const logout = async (req, res) => {
@@ -213,8 +202,6 @@ export const logout = async (req, res) => {
     });
   }
 };
-
-
 
 //Update Password---student
 export const updatePassword = async (req, res) => {
@@ -255,15 +242,12 @@ export const updatePassword = async (req, res) => {
   }
 };
 
-
-
 //Update Profile---by admin/student
 export const updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
-    const { name, email, branch, graduation_year, courseTrack} =
-      req.body;
+    const { name, email, branch, graduation_year, courseTrack } = req.body;
 
     if (name) {
       user.name = name;
@@ -278,7 +262,7 @@ export const updateProfile = async (req, res) => {
       user.graduation_year = graduation_year;
     }
     if (courseTrack) {
-        user.courseTrack = courseTrack;
+      user.courseTrack = courseTrack;
     }
 
     await user.save();
@@ -296,8 +280,6 @@ export const updateProfile = async (req, res) => {
     });
   }
 };
-
-
 
 //Forget Password
 export const forgotPassword = async (req, res) => {
@@ -350,7 +332,6 @@ export const forgotPassword = async (req, res) => {
   }
 };
 
-
 //Reset Password
 export const resetPassword = async (req, res) => {
   try {
@@ -375,8 +356,8 @@ export const resetPassword = async (req, res) => {
       return next(createError(400, "Password does not password"));
     }
 
-    if(req.body.password === req.body.confirmPassword){
-      user.password = req.body.password;    
+    if (req.body.password === req.body.confirmPassword) {
+      user.password = req.body.password;
 
       user.resetPasswordToken = undefined;
       user.resetPasswordExpire = undefined;
@@ -400,26 +381,23 @@ export const resetPassword = async (req, res) => {
   }
 };
 
-
-
 //GetAll Student --- admin
-export const getallStudent = async (req,res)=>{
-    const apiFeatures = new ApiFeatures(User.find(), req.query).search().filter();
-    try{
-      const users = await apiFeatures.query;
-        //const users = await User.find();
-        res.status(200).json({
-          success: true,
-          users,
-        });
-    } catch (error) {
-        res.status(500).json({
-          success: false,
-          message: error.message,
-        });
-    }
+export const getallStudent = async (req, res) => {
+  const apiFeatures = new ApiFeatures(User.find(), req.query).search().filter();
+  try {
+    const users = await apiFeatures.query;
+    //const users = await User.find();
+    res.status(200).json({
+      success: true,
+      users,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
-
 
 //Get Student Profile
 export const getStudentProfile = async (req, res) => {
@@ -443,7 +421,3 @@ export const getStudentProfile = async (req, res) => {
     });
   }
 };
-
-
-
-

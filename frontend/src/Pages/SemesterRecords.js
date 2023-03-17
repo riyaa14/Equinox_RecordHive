@@ -5,20 +5,25 @@ import SemesterForm from "../Components/SemesterForm";
 
 function SemesterRecords() {
   const [popUp, setPopUp] = useState(null);
-  //   const [TransRecords, setTransRecords] = useState(null);
+  const [semRecords, setSemRecords] = useState(null);
 
-  //   useEffect(() => {
-  //     const fetchRecords = async () => {
-  //       const response = await fetch(
-  //         "http://localhost:3007/api/transcript/student/trans"
-  //       );
-  //       const json = await response.json();
-  //       if (response.ok) {
-  //         setTransRecords(json);
-  //       }
-  //     };
-  //     fetchRecords();
-  //   }, []);
+  useEffect(() => {
+    const fetchRecords = async () => {
+      const response = await fetch("http://localhost:3007/api/semester/all", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        },
+        credentials: "include",
+      });
+      const json = await response.json();
+      if (response.ok) {
+        setSemRecords(json);
+      }
+    };
+    fetchRecords();
+  }, []);
 
   return (
     <div className="main-content">
@@ -32,22 +37,18 @@ function SemesterRecords() {
           >
             ADD NEW SEMESTER
           </button>
-          {/* {TransRecords &&
-            TransRecords.map((trans) => {
+          {semRecords &&
+            semRecords.map((semester) => {
               return (
-                <TranscriptCards
-                  key={trans._id}
-                  studentId={trans.studentId}
-                  semesterId={trans.semesterId}
-                  status={trans.status}
-                  message={trans.message}
+                <SemesterCards
+                  key={semester._id}
+                  semNo={semester.semNo}
+                  semStart={semester.semStart}
+                  semEnd={semester.semEnd}
+                  semType={semester.semType}
                 />
               );
-            })} */}
-          <SemesterCards />
-          <SemesterCards />
-          <SemesterCards />
-          <SemesterCards />
+            })}
 
           <SemesterForm trigger={popUp} setTrigger={setPopUp} />
         </div>

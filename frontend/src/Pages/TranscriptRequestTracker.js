@@ -8,7 +8,15 @@ function TranscriptRecords() {
   useEffect(() => {
     const fetchRecords = async () => {
       const response = await fetch(
-        "http://localhost:3007/api/transcript/student/trans"
+        "http://localhost:3007/api/transcript/student/trans",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+          },
+          credentials: "include",
+        }
       );
       const json = await response.json();
       if (response.ok) {

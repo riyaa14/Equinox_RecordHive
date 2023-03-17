@@ -5,20 +5,25 @@ import CourseForm from "../Components/CourseForm";
 
 function CourseRecords() {
   const [popUp, setPopUp] = useState(null);
-  //   const [TransRecords, setTransRecords] = useState(null);
+  const [courseRecords, setCourseRecords] = useState(null);
 
-  //   useEffect(() => {
-  //     const fetchRecords = async () => {
-  //       const response = await fetch(
-  //         "http://localhost:3007/api/transcript/student/trans"
-  //       );
-  //       const json = await response.json();
-  //       if (response.ok) {
-  //         setTransRecords(json);
-  //       }
-  //     };
-  //     fetchRecords();
-  //   }, []);
+  useEffect(() => {
+    const fetchRecords = async () => {
+      const response = await fetch("http://localhost:3007/api/course/all", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        },
+        credentials: "include",
+      });
+      const json = await response.json();
+      if (response.ok) {
+        setCourseRecords(json);
+      }
+    };
+    fetchRecords();
+  }, []);
 
   return (
     <div className="main-content">
@@ -32,22 +37,18 @@ function CourseRecords() {
           >
             ADD NEW COURSE
           </button>
-          {/* {TransRecords &&
-            TransRecords.map((trans) => {
+          {courseRecords &&
+            courseRecords.map((course) => {
               return (
-                <TranscriptCards
-                  key={trans._id}
-                  studentId={trans.studentId}
-                  semesterId={trans.semesterId}
-                  status={trans.status}
-                  message={trans.message}
+                <CourseCards
+                  key={course._id}
+                  name={course.name}
+                  desc={course.desc}
+                  code={course.code}
+                  credit={course.credit}
                 />
               );
-            })} */}
-          <CourseCards />
-          <CourseCards />
-          <CourseCards />
-          <CourseCards />
+            })}
 
           <CourseForm trigger={popUp} setTrigger={setPopUp} />
         </div>
