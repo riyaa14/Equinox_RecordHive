@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function GeneratePDF() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [filePreview, setFilePreview] = useState(null);
 
   function handleInputChange(event) {
@@ -18,8 +18,13 @@ function GeneratePDF() {
   return (
     <div className="file-containeroff">
       <div className="file-uploadoff">
-        <label htmlFor="textbox1"><h6 style={{fontSize:'16px'}}>Submit Official Transcript generation request:</h6></label>
+        <label htmlFor="textbox1">
+          <h6 style={{ fontSize: "16px" }}>
+            Submit Official Transcript generation request:
+          </h6>
+        </label>
         <input
+          className="req-transcript-student"
           type="text"
           id="textbox1"
           value={inputValue}
@@ -51,4 +56,3 @@ function GeneratePDF() {
 }
 
 export default GeneratePDF;
-

@@ -15,7 +15,7 @@
     border-radius: 12px;
     width: 500px;
   }
-  input[type="text"], select {
+  .req-transcript-student input[type="text"], select {
     display: block;
     margin: 20px auto;
     padding: 10px;
