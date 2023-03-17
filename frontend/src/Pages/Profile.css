@@ -424,7 +424,7 @@
   
   #mobile-no,
   #mobile-no2 {
-    width: 100%;
+    width: 80%;
   }
   
   #mobile-no::-webkit-inner-spin-button,
@@ -458,7 +458,7 @@
   
   #email-id,
   #alternate-email-id {
-    width: 100%;
+    width: 80%;
   }
   
   #email-id:focus,
@@ -525,7 +525,7 @@
   .left label, .right label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
+    
   }
   
   .left input[type="text"], .right input[type="text"]{
@@ -535,4 +535,12 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+  }
+  #father-mobile-no{
+    margin-left: 0;
+    width: 80%;
+  }
+  #mother-mobile-no{
+    margin-left: 0;
+    width:80%;
   }
