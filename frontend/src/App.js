@@ -11,7 +11,9 @@ import LoginForm from "./Components/Loginform/Loginform";
 import Sidebar from "./Components/SideBarAdminSide";
 import CourseRecords from "./Pages/CourseRecords";
 import SemesterRecords from "./Pages/SemesterRecords";
-
+import Dashboard from "./Pages/Dashboard";
+import Request from "./Pages/Request";
+import Generate from "./Pages/Generate";
 function App() {
   const location = useLocation();
   return (
@@ -21,6 +23,13 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/StudentRecords" element={<StudentRecords />} />
         <Route path="/Transcripts" element={<TranscriptRequestTracker />} />
+        <Route path="/request" element={<TranscriptRequestSubmit />} />
+        <Route path="/course" element={<CourseRecords />} />
+        <Route path="/semester" element={<SemesterRecords />} />
+        <Route path="/profile" element={<StudentProfile />} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/generate" element={<Generate/>}/>
+        <Route path="/request" element={<Request/>} />
       </Routes>
     </>
   );

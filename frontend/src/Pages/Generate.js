@@ -1,8 +1,8 @@
 import React from 'react'
-import './Request.css';
+import './Generate.css';
 import ScriptReq from "../Components/ScriptReq";
 import SideBar from "../Components/SideBarStudent";
-function TranscriptRequestSubmit() {
+function GenerateRequest() {
   return (
     <div>
       <ScriptReq></ScriptReq>
@@ -11,4 +11,4 @@ function TranscriptRequestSubmit() {
   )
 }
 
-export default TranscriptRequestSubmit
+export default GenerateRequest

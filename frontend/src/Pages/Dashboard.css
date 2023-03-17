@@ -1,0 +1,281 @@
+.profile-heading{
+    color: #ffffff;
+    text-align: right;
+    top:10%;
+  }
+  .sidebar {
+    background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25)); /* black background color */
+    width: 15.625rem; /* width of the sidebar */
+    height: 93%; /* height of the sidebar */
+    position: fixed; /* make the sidebar fixed */
+    top: 2%; /* align the top of the sidebar to the top of the page */
+    left: 1%; /* align the left of the sidebar to the left of the page */
+    bottom:1%;
+    border-radius: 0.75rem; /* rounded radius for the bottom right corner */
+    background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+    transition: left 0.5s ease;
+  }
+  @media (max-width: 768px) {
+    .sidebar {
+      left: -200px; /* move the sidebar to the left by the width of the sidebar */
+    }
+  }
+  
+  .profile-option,
+  .generate-option,
+  .request-option {
+    position: relative;
+    color: #ffffff; /* white text color */
+    padding: 24px 32px 8px;
+    text-align: left;
+    font-size: 16px; /* set the font size of the options */
+    cursor: pointer; /* add a pointer cursor to the options */
+    transition: background-color 0.3s ease; /* add transition property */
+    border-radius: 7px; /* add rounded corners */
+    padding: 8px 12px; /* reduce padding to make the box smaller */
+    width:200px;
+    
+    margin: 1.09375rem ;
+  }
+  
+  
+  .profile-option:hover,
+  .generate-option:hover,
+  .request-option:hover {
+    background-color: rgba(128, 128, 128, 0.5);; /* change the background color of the option on hover */
+    color: #ffffff; /* change the text color of the option on hover */
+    transition: color 0.3s ease;
+    border-radius: 7px; /* add rounded corners */
+    padding: 8px 12px; /* reduce padding to make the box smaller */
+    width:200px;
+  }
+  
+  .profile-option:hover,
+  .generate-option:hover,
+  .request-option:hover,
+  .profile-option:hover *:not(.sidebar-icon),
+  .generate-option:hover *:not(.sidebar-icon),
+  .request-option:hover *:not(.sidebar-icon) {
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  
+  .profile h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  
+  
+  .button-icon i {
+    font-size: 24px;
+  }
+  .option-left{
+    margin-left: 50px;
+  }
+  .atag{
+    text-decoration: none;
+    color:#ffffff;
+  }
+  .selected{
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232)); /* change the background color of the option on hover */
+    color: #ffffff; /* change the text color of the option on hover */
+    transition: color 0.3s ease;
+    border-radius: 7px; /* add rounded corners */
+    padding: 8px 12px; /* reduce padding to make the box smaller */
+    width:200px;
+    
+  }
+  #logoutbutton{
+    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232)); /* change the background color of the option on hover */
+    color: #ffffff; /* change the text color of the option on hover */
+    transition: color 0.3s ease;
+    border-radius: 7px; /* add rounded corners */
+    padding: 11px 7px; /* reduce padding to make the box smaller */
+    width:200px;
+    top:84%;
+    text-align: center;
+    font-weight: bold;
+    position: fixed;
+  }
+  .divider {
+    
+      border-top: 0px solid rgba(0, 0, 0, 0.08);
+      border-right: 0px solid rgba(0, 0, 0, 0.08);
+      border-left: 0px solid rgba(0, 0, 0, 0.08);
+      height: 0.0625rem;
+      margin: 1rem 0px;
+      border-bottom: none;
+      opacity: 0.25;
+      background-color: transparent;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255), rgba(255, 255, 255, 0)) !important;
+      z-index: 12;
+    }
+    .notification-card-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+    }
+    
+    .notification-card {
+      padding: 10px;
+      position: relative;
+      left:20%;
+      margin-top: 5%;
+      color: rgba(0, 0, 0, 0.87);
+      transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      min-width: 200px;
+      overflow-wrap: break-word;
+      background-color: rgb(255, 255, 255);
+      background-clip: border-box;
+      border: 0px solid rgba(0, 0, 0, 0.125);
+      border-radius: 12px;;
+      box-shadow: rgba(0, 0, 0, 0.1) 0rem 0.25rem 0.375rem -0.0625rem, rgba(0, 0, 0, 0.06) 0rem 0.125rem 0.25rem -0.0625rem;
+      overflow: visible;
+      max-width: 15rem;
+      max-height: 11rem;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+    
+    .icon-container {
+      position: absolute;
+      top:-12px;
+      left:5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 4rem;
+      height: 4rem;
+      opacity: 1;
+      background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+      color: rgb(255, 255, 255);
+      border-radius: 0.75rem;
+      box-shadow: rgba(0, 0, 0, 0.14) 0rem 0.25rem 1.25rem 0rem, rgba(0, 187, 212, 0.4) 0rem 0.4375rem 0.625rem -0.3125rem;
+    }
+    
+    .icon-container i {
+      color: white;
+      font-size: 20px;
+    }
+    
+    .card-head{
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    #card-text{
+      text-align: left;
+    }
+    
+    .divider-notif {
+      border-top: 0px solid rgba(0, 0, 0, 0.08);
+      border-right: 0px solid rgba(0, 0, 0, 0.08);
+      border-left: 0px solid rgba(0, 0, 0, 0.08);
+      height: 0.0625rem;
+      margin: 1rem 0px;
+      border-bottom: none;
+      opacity: 0.5;
+      background-color: transparent;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(0, 0, 0), rgba(255, 255, 255, 0)) !important;
+      z-index: 12;
+    }
+    .flex-containerdis {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 1000px;
+      border: 1px solid black;
+      position: relative;
+      padding: 50px;
+      margin-left: 20%;
+      margin-top: 7%;
+    }
+    
+    .flex-containerdis::before {
+      content: 'Your Profile';
+      display: inline-block;
+      position: absolute;
+      top: -12px;
+      left: 10px;
+      background-color: white;
+      padding: 0 8px;
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid black;
+    }
+    .left {
+      flex-basis: 45%;
+    }
+    
+    .right {
+      flex-basis: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
+      background-size: 12px;
+      background-position: calc(100% - 12px) center;
+      padding-right: 24px;
+    }
+    
+    .profile-icon {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+    
+    #student-status {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 12px;
+    }
+    
+    #student-status label {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 12px;
+    }
+    
+    #student-status input[type="radio"] {
+      margin-right: 4px;
+    }
+      

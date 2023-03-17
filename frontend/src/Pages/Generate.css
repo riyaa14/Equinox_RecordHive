@@ -1,11 +1,11 @@
-.file-containeroff{
-    margin-top:10%;
+.file-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+   
 }
-.file-uploadoff {
+.file-upload {
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -14,16 +14,8 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     border-radius: 12px;
     width: 500px;
-  }
-  input[type="text"], select {
-    display: block;
-    margin: 20px auto;
-    padding: 10px;
-    border: 2px solid #ddd;
-    width: 80%;
-    max-width: 280px;
-    min-height: 180px;
-    font-size: 18px;
+    position: absolute;
+    top:5%;
   }
   
   .imge-container {
@@ -42,7 +34,7 @@
     margin-right: 10px;
   }
   
-  .file-upload #textbox1 {
+  .file-upload #textbox {
     display: block;
     margin: 20px auto;
     padding: 10px;
@@ -56,7 +48,8 @@
   .file-upload label {
     display: block;
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: -17px;
+    margin-bottom: -12px;
   }
   
   .file-upload img {
@@ -87,4 +80,3 @@
   .submit:hover {
     background: linear-gradient(195deg, rgb(110, 247, 130), rgb(40, 131, 24));;
   }
-  
