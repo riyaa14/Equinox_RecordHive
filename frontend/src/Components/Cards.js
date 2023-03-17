@@ -6,7 +6,7 @@ import CourseHistory from "../Components/CourseHistory";
 import Profile from "../Components/Profile";
 
 function Cards(props) {
-  const {  userId, name, enrollNo, branch, graduation_year } = props;
+  const { userId, name, enrollNo, branch, graduation_year } = props;
 
   const [popUp, setPopUp] = useState(false);
   const [GPApopUp, setGPAPopUp] = useState(false);
@@ -23,7 +23,6 @@ function Cards(props) {
   const handleCoursePopUp = () => {
     setCoursePopUp(true);
   };
-  
 
   return (
     <div className="student-record">
@@ -46,9 +45,17 @@ function Cards(props) {
       </div>
 
       <GPA trigger={GPApopUp} setTrigger={setGPAPopUp} sid={userId} />
-        <Profile trigger={ProfilepopUp} setTrigger={setProfilePopUp} sid={userId}/>
-        <CourseHistory trigger={CoursepopUp} setTrigger={setCoursePopUp} sid={userId} />
-        <StudentForm trigger={popUp} setTrigger={setPopUp} sid={userId}/>
+      <Profile
+        trigger={ProfilepopUp}
+        setTrigger={setProfilePopUp}
+        sid={userId}
+      />
+      <CourseHistory
+        trigger={CoursepopUp}
+        setTrigger={setCoursePopUp}
+        sid={userId}
+      />
+      <StudentForm trigger={popUp} setTrigger={setPopUp} sid={userId} />
     </div>
   );
 }

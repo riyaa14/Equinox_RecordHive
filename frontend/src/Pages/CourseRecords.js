@@ -50,6 +50,14 @@ function CourseRecords() {
               );
             })}
 
+          {/* <CourseCards
+            key="1"
+            name="bjwqx"
+            desc="qbwjd "
+            code="bqj"
+            credit="kd"
+          /> */}
+
           <CourseForm trigger={popUp} setTrigger={setPopUp} />
         </div>
       </div>
