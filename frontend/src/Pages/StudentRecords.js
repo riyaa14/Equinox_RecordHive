@@ -12,13 +12,14 @@ function StudentRecords() {
   const [GPApopUp, setGPAPopUp] = useState(false);
   const [CoursepopUp, setCoursePopUp] = useState(false);
   const [ProfilepopUp, setProfilePopUp] = useState(false);
+  const [GradReqpopUp, setGradReqPopUp] = useState(false);
 
   const [users, setAllUsers] = useState(null);
   const [name, setName] = useState(null);
 
   async function getAllStudents(name = "") {
     const res = await fetch(
-      `http://localhost:3007/api/user/users?keyword=${name}&role=student`,
+      `http://localhost:3007/api/user/users?keyword=${name}`,
       {
         method: "GET",
         headers: {
@@ -37,7 +38,7 @@ function StudentRecords() {
   async function searchHandler(e) {
     e.preventDefault();
     const res = await fetch(
-      `http://localhost:3007/api/user/users?keyword=${name}&role=student`,
+      `http://localhost:3007/api/user/users?keyword=${name}`,
       {
         method: "GET",
         headers: {
@@ -81,40 +82,29 @@ function StudentRecords() {
             <div className="homeright">
               {users && users.length > 0 ? (
                 users.map((user) => (
-                  <div color="white" key={user._id}>
-                    <Cards
-                      setGPAPopUp={setGPAPopUp}
-                      setCoursePopUp={setCoursePopUp}
-                      setProfilePopUp={setProfilePopUp}
-                      userId={user._id}
-                      name={user.name}
-                      enrollNo={user.enrollNo}
-                      branch={user.branch}
-                      graduation_year={user.graduation_year}
-                    />
-                  </div>
+                  <Cards
+                    setGPAPopUp={setGPAPopUp}
+                    setCoursePopUp={setCoursePopUp}
+                    setProfilePopUp={setProfilePopUp}
+                    setGradReqPopUp={setGradReqPopUp}
+                    key={user._id}
+                    userId={user._id}
+                    name={user.name}
+                    enrollNo={user.enrollNo}
+                    branch={user.branch}
+                    graduation_year={user.graduation_year}
+                  />
                 ))
               ) : (
                 <h3 style={{ color: "black" }}>No students yet</h3>
               )}
             </div>
-
-            <Cards
-              setGPAPopUp={setGPAPopUp}
-              setCoursePopUp={setCoursePopUp}
-              setProfilePopUp={setProfilePopUp}
-              userId="1"
-              name="hjbqh"
-              enrollNo="qib begv"
-              branch="qhbeiu  "
-              graduation_year="hbqdi"
-            />
           </form>
         </div>
 
-        <GPA trigger={GPApopUp} setTrigger={setGPAPopUp} />
+        {/* <GPA trigger={GPApopUp} setTrigger={setGPAPopUp} />
         <Profile trigger={ProfilepopUp} setTrigger={setProfilePopUp} />
-        <CourseHistory trigger={CoursepopUp} setTrigger={setCoursePopUp} />
+        <CourseHistory trigger={CoursepopUp} setTrigger={setCoursePopUp} /> */}
         <StudentForm trigger={popUp} setTrigger={setPopUp} />
       </div>
     </div>

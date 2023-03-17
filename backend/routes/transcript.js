@@ -2,7 +2,6 @@ import express from "express";
 import {
   generateUnofficialTranscript,
   requestOfficialTranscript,
-  getStudentTranscripts,
   getAllStudentTranscripts,
 } from "../controllers/transcript.js";
 import {
@@ -24,8 +23,6 @@ router.post(
   isAuthenticatedStudent,
   requestOfficialTranscript
 );
-
-router.get("/student/trans/:id", getStudentTranscripts);
 
 router.get("/student/trans", getAllStudentTranscripts);
 

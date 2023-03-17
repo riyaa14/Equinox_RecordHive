@@ -4,6 +4,7 @@ import StudentForm from "../Components/StudentForm";
 import GPA from "../Components/GPA";
 import CourseHistory from "../Components/CourseHistory";
 import Profile from "../Components/Profile";
+import GradRequirements from "./GradRequirements";
 
 function Cards(props) {
   const { userId, name, enrollNo, branch, graduation_year } = props;
@@ -12,6 +13,7 @@ function Cards(props) {
   const [GPApopUp, setGPAPopUp] = useState(false);
   const [CoursepopUp, setCoursePopUp] = useState(false);
   const [ProfilepopUp, setProfilePopUp] = useState(false);
+  const [GradReqPopUp, setGradReqPopUp] = useState(false);
   const handleGPAPopUp = () => {
     setGPAPopUp(true);
   };
@@ -22,6 +24,10 @@ function Cards(props) {
 
   const handleCoursePopUp = () => {
     setCoursePopUp(true);
+  };
+
+  const handleGradReqPopUp = () => {
+    setGradReqPopUp(true);
   };
 
   return (
@@ -42,6 +48,9 @@ function Cards(props) {
         <button className="edit-student" onClick={handleProfilePopUp}>
           PROFILE
         </button>
+        <button className="edit-student" onClick={handleGradReqPopUp}>
+          Grad Req
+        </button>
       </div>
 
       <GPA trigger={GPApopUp} setTrigger={setGPAPopUp} sid={userId} />
@@ -53,6 +62,11 @@ function Cards(props) {
       <CourseHistory
         trigger={CoursepopUp}
         setTrigger={setCoursePopUp}
+        sid={userId}
+      />
+      <GradRequirements
+        trigger={GradReqPopUp}
+        setTrigger={setGradReqPopUp}
         sid={userId}
       />
       <StudentForm trigger={popUp} setTrigger={setPopUp} sid={userId} />
