@@ -57,7 +57,7 @@ export const registerS = async (req, res) => {
       enrollNo,
       branch,
       graduation_year,
-      role: "Student",
+      role: "student",
     });
 
     res.status(201).json({
@@ -383,7 +383,7 @@ export const resetPassword = async (req, res) => {
 
 //GetAll Student --- admin
 export const getallStudent = async (req, res) => {
-  const apiFeatures = new ApiFeatures(User.find({ role: "Student" }), req.query)
+  const apiFeatures = new ApiFeatures(User.find({ role: "student" }), req.query)
     .search()
     .filter();
   try {

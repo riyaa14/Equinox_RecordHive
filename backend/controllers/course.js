@@ -154,8 +154,9 @@ export const addCourse = async (req, res) => {
         .json({ msg: "Course already exists in student course track" });
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Add course to user's course track
+    /////////////////////STACK IS USED HERE TO PUSH A COURSE IN STUDENT'S COURSE HISTORY///////////////////////////////////////////////////////////////////////////
+    // THE REASON TO USE STACK OPERATION PUSH IS SO THAT THE MOST RECENT COURSE IS DISPLAYED ON THE TOP
+    // Pushing course to the top of user's course track
     user.courseTrack.push({
       course: course._id,
       marks: 0,
@@ -398,7 +399,7 @@ export const getSGPA = async (req, res) => {
     }
 
     //console.log(student)
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////STACK USAGE IN CALCULATION OF SEMESTER WISE GPA///////////////////////////////////////////////////////////////////////////////
     const stack = [];
 
     for (let i = student.courseTrack.length - 1; i >= 0; i--) {

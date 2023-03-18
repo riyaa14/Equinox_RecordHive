@@ -14,18 +14,18 @@ function GeneratePDF() {
     // Send a request to the backend to submit the form data
     // and receive the response
     // setFilePreview with the response data
-    const message = inputValue;
     // SEMESTER ID WHICH IS A REQ PARAMETER IS HARD CODED - value -  6413061cef21d3fc526c93bc
     const response = await fetch(
       "http://localhost:3007/api/transcript/request/official/6413061cef21d3fc526c93bc",
       {
         method: "POST",
-        body: JSON.stringify(message),
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        body: JSON.stringify({ message: inputValue }),
         credentials: "include",
+        mode: "cors",
       }
     );
 
