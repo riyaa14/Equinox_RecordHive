@@ -76,6 +76,7 @@ function SemesterRecords() {
               return (
                 <SemesterCards
                   key={semester._id}
+                  semId={semester._id}
                   semNo={semester.semNo}
                   semStart={semester.semStart}
                   semEnd={semester.semEnd}

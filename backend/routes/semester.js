@@ -4,9 +4,13 @@ import {
   deleteSemester,
   updateSemester,
   getallSemester,
-  getSemester
+  getSemester,
 } from "../controllers/semester.js";
-import { isAuthenticated, isAuthenticatedAdmin, isAuthenticatedStudent } from "../utils/Auth.js";
+import {
+  isAuthenticated,
+  isAuthenticatedAdmin,
+  isAuthenticatedStudent,
+} from "../utils/Auth.js";
 
 const router = express.Router();
 
@@ -19,8 +23,5 @@ router.put("/update/:semesterId", isAuthenticatedAdmin, updateSemester);
 router.get("/all", isAuthenticatedAdmin, getallSemester);
 
 router.get("/:semesterId", isAuthenticatedAdmin, getSemester);
-
-
-
 
 export default router;

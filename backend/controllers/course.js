@@ -32,7 +32,7 @@ export const createCourse = async (req, res) => {
 //Delete Course ---admin
 export const deleteCourse = async (req, res) => {
   try {
-    const course = await Course.findById(req.params.courseId);
+    const course = await Course.findByIdAndDelete(req.params.courseId);
 
     if (!course) {
       return res.status(404).json({
@@ -40,8 +40,6 @@ export const deleteCourse = async (req, res) => {
         message: "Course not found",
       });
     }
-
-    await course.remove();
 
     res.status(200).json({
       success: true,
