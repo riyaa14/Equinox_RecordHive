@@ -56,11 +56,12 @@ const Loginform = () => {
 
   return <Card>
     <h1 className='title'>Sign In</h1>
+    <div className="divider"></div>
     <p className='subtitle'>Please login using your Email and password</p>
     <form onSubmit={loginHandler}>
         <div className='input_Container'>
-            <input type="text" placeholder='enrollment no' required value={enrollNo} onChange={(e) => setEnroll(e.target.value)}/>
-            <input type="password" placeholder='password' required value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <input type="text" placeholder='Enrollment no' required value={enrollNo} onChange={(e) => setEnroll(e.target.value)}/>
+            <input type="password" placeholder='Password' required value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <button type='submit' value="Log In" className='login_button'>Log In</button>
     </form>
@@ -69,6 +70,7 @@ const Loginform = () => {
            Forgot password?
         </a>
     </div>
+    <div className="divider"></div>
     {error && <p>{error}</p>}
     <div className='icons'><FaGoogle style={{ color: 'white', fontSize: '24px' }} />
     <FaGithub style={{ color: 'white', fontSize: '24px' }} />

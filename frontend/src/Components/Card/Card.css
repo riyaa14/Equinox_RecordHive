@@ -1,11 +1,12 @@
 .card{
     width:320px;
-    background-color: #000;
-    height:450px;
+ background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+    height:500px;
     border-radius: 1rem;
     padding:2rem;
     margin: auto;
     margin-top: 30px;
+    box-shadow:rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 @media only screen and (max-width: 620px) {

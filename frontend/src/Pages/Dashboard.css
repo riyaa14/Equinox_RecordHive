@@ -103,7 +103,7 @@
     
   }
   #logoutbutton{
-    background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232)); /* change the background color of the option on hover */
+    background:  linear-gradient(195deg,rgb(199, 121, 247) , rgb(158, 7, 251) );; /* change the background color of the option on hover */
     color: #ffffff; /* change the text color of the option on hover */
     transition: color 0.3s ease;
     border-radius: 7px; /* add rounded corners */

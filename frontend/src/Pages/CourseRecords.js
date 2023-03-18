@@ -52,9 +52,7 @@ function CourseRecords() {
 
   return (
     <div className="main-content">
-      <div className="home">
-        <div>
-          <button
+      <button
             className="addNew"
             onClick={() => {
               setPopUp(true);
@@ -62,6 +60,9 @@ function CourseRecords() {
           >
             ADD NEW COURSE
           </button>
+      <div className="home">
+        <div>
+          
           <form onSubmit={searchHandler}>
             <input
               type="text"
@@ -69,8 +70,9 @@ function CourseRecords() {
               placeholder="Search Name"
               onChange={(e) => setName(e.target.value)}
             />
+            <Button type="submit">Search</Button>
           </form>
-          <Button type="submit">Search</Button>
+          
           {courseRecords && courseRecords.length > 0 ? (
             courseRecords.map((course) => {
               return (
