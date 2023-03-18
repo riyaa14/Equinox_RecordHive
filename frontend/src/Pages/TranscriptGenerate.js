@@ -4,7 +4,7 @@ import ScriptReq from "../Components/ScriptReq";
 import SideBar from "../Components/SideBarStudent";
 function GenerateRequest() {
   return (
-    <div>
+    <div id='generatebg'>
       <ScriptReq></ScriptReq>
       <SideBar></SideBar>
     </div>

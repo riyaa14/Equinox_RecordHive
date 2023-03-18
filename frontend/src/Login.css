@@ -4,6 +4,7 @@ body {
   font-family:'poppins','sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./assets/loginbg.jpg');
   
 }
 .himanshi{
@@ -14,6 +15,7 @@ body {
   display: flex;
   min-height: 100vh;
   align-items:center;
-  background-image: url('./assets/loginbg.jpg');
+  background-image:url('./assets/loginbg.jpg') !important;
+  
   
 }

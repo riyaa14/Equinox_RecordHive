@@ -58,7 +58,8 @@ function StudentRecords() {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className="otherspgsbg">
+      <div className="main-content">
       <button
         className="addNew"
         onClick={() => {
@@ -95,11 +96,13 @@ function StudentRecords() {
                   </div>
                 ))
               ) : (
-                <h3 style={{ color: "black" }}>No students yet</h3>
+                <h3 style={{ color: "white" }}>No students yet</h3>
               )}
             </div>
           </form>
         </div>
+    </div>
+    
 
         <GPA trigger={GPApopUp} setTrigger={setGPAPopUp} />
         <Profile trigger={ProfilepopUp} setTrigger={setProfilePopUp} />

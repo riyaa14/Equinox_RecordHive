@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 .file-uploadoff {
     background-color: rgb(255, 255, 255);
@@ -14,6 +15,13 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     border-radius: 12px;
     width: 500px;
+    background: rgba(145, 38, 181, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.2px);
+    -webkit-backdrop-filter: blur(18.2px);
+    border: 2px solid rgba(145, 38, 181, 0.48);
+    margin-top: -50px;
   }
   .req-transcript-student input[type="text"], select {
     display: block;
@@ -24,6 +32,7 @@
     max-width: 280px;
     min-height: 35px;
     font-size: 18px;
+    color: #ffffff;
   }
   
   .imge-container {
@@ -86,5 +95,13 @@
   
   .submit:hover {
     background: linear-gradient(195deg, rgb(110, 247, 130), rgb(40, 131, 24));;
+  }
+  #requestbg{
+    width:100%;
+    height:100vh;
+    background-image: url('../assets/otherpgsbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0;
   }
   

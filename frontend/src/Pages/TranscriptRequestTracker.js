@@ -27,7 +27,8 @@ function TranscriptRecords() {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className="otherspgsbg">
+      <div className="main-content">
       <div className="home">
         <div>
           {TransRecords && TransRecords.length > 0 ? (
@@ -43,11 +44,13 @@ function TranscriptRecords() {
               );
             })
           ) : (
-            <h3 style={{ color: "black" }}>No Transcript yet</h3>
+            <h3 style={{ color: "white" }}>No Transcript yet</h3>
           )}
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 

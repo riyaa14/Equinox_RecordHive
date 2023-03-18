@@ -1,12 +1,14 @@
+
 .file-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
    
 }
 .file-upload {
-    background-color: rgb(255, 255, 255);
+    background-color: #c67dd124;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +18,15 @@
     width: 500px;
     position: absolute;
     top:5%;
+    /* From https://css.glass */
+  /* From https://css.glass */
+  /* From https://css.glass */
+    background: rgba(145, 38, 181, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.2px);
+    -webkit-backdrop-filter: blur(18.2px);
+    border: 2px solid rgba(145, 38, 181, 0.48);
   }
   
   .imge-container {
@@ -43,6 +54,8 @@
     max-width: 280px;
     min-height: 180px;
     font-size: 18px;
+    
+    
   }
   
   .file-upload label {
@@ -50,6 +63,7 @@
     font-size: 24px;
     margin-bottom: -17px;
     margin-bottom: -12px;
+    color: #ddd;
   }
   
   .file-upload img {
@@ -80,4 +94,12 @@
   .submit:hover {
     background: linear-gradient(195deg, rgb(18, 178, 58), rgb(40, 131, 24));
     transition: 0.3s ease;
+  }
+  #generatebg{
+    width:100%;
+    height:100vh;
+    background-image: url('../assets/otherpgsbg.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin-top:10%
   }

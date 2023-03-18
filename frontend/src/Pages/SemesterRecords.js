@@ -51,7 +51,8 @@ function SemesterRecords() {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className="otherspgsbg">
+      <div className="main-content">
       <button
             className="addNew"
             onClick={() => {
@@ -86,13 +87,15 @@ function SemesterRecords() {
               );
             })
           ) : (
-            <h3 style={{ color: "black" }}>No Semester Records yet</h3>
+            <h3 style={{ color: "white" }}>No Semester Records yet</h3>
           )}
 
           <SemesterForm trigger={popUp} setTrigger={setPopUp} />
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 

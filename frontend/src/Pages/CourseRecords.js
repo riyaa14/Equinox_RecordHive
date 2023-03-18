@@ -51,7 +51,8 @@ function CourseRecords() {
   }, []);
 
   return (
-    <div className="main-content">
+    <div className="otherspgsbg">
+      <div className="main-content">
       <button
             className="addNew"
             onClick={() => {
@@ -86,7 +87,7 @@ function CourseRecords() {
               );
             })
           ) : (
-            <h3 style={{ color: "black" }}>No Courses yet</h3>
+            <h3 style={{ color: "white" }}>No Courses yet</h3>
           )}
 
           {/* <CourseCards
@@ -101,6 +102,8 @@ function CourseRecords() {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
 
