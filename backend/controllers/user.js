@@ -383,7 +383,9 @@ export const resetPassword = async (req, res) => {
 
 //GetAll Student --- admin
 export const getallStudent = async (req, res) => {
-  const apiFeatures = new ApiFeatures(User.find(), req.query).search().filter();
+  const apiFeatures = new ApiFeatures(User.find({ role: "Student" }), req.query)
+    .search()
+    .filter();
   try {
     const users = await apiFeatures.query;
     //const users = await User.find();

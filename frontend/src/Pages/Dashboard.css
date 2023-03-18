@@ -278,4 +278,12 @@
     #student-status input[type="radio"] {
       margin-right: 4px;
     }
+#textbox1{
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
       

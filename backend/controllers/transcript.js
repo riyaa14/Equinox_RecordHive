@@ -215,10 +215,14 @@ export const requestOfficialTranscript = async (req, res) => {
   }
 };
 
-//Get Student's transcripts
+//Get All Student Requests for Official transcripts
 export const getAllStudentTranscripts = async (req, res) => {
+  const apiFeatures = new ApiFeatures(
+    Transcript.find({ status: "official" }),
+    req.query
+  );
   try {
-    const transcript = await Transcript.find({});
+    const transcript = await apiFeatures.query;
     //const users = await User.find();
     res.status(200).json({
       success: true,
