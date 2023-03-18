@@ -76,7 +76,7 @@ export const registerS = async (req, res) => {
 export const whoami = async (req, res) => {
   try {
     const cookie = req.headers.cookie;
-    //console.log(cookie);
+    //console.log(req.headers);
     res.set("Access-Control-Allow-Origin", "http://localhost:3000");
     res.set("Access-Control-Allow-Credentials", "true");
     //res.setHeader("Access-Control-Allow-Credentials", true);

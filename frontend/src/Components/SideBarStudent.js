@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
+
 
 function Sidebar() {
+  const navigate = useNavigate();
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleButtonClick = (id) => {
     setSelectedButton(id);
   };
+
+  async function handleLogOut() {
+    const res = await fetch("http://localhost:3007/api/user/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+      },
+      credentials: "include",
+    });
+    toast.success("Logout Successful");
+    navigate("/Login");
+  }
 
   return (
     <div className="sidebar">
@@ -76,7 +93,7 @@ function Sidebar() {
       <div
       >
         <span className="option-left" style={{ marginLeft: '18px' }}>
-          <Link to="/logout" className="atag" Id="logoutbutton">
+          <Link to="/logout" className="atag" Id="logoutbutton" onClick={handleLogOut} >
             LOGOUT
           </Link>
         </span>

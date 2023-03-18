@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import toast from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
+
 
 function GeneratePDF() {
+
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
-  const [filePreview, setFilePreview] = useState(null);
-  const [err, setErr] = useState(null);
+  
 
   function handleInputChange(event) {
     setInputValue(event.target.value);
@@ -15,29 +19,27 @@ function GeneratePDF() {
     // and receive the response
     // setFilePreview with the response data
     // SEMESTER ID WHICH IS A REQ PARAMETER IS HARD CODED - value -  6413061cef21d3fc526c93bc
-    const response = await fetch(
-      "http://localhost:3007/api/transcript/request/official/6413061cef21d3fc526c93bc",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({ message: inputValue }),
-        credentials: "include",
-        mode: "cors",
-      }
-    );
-
-    const json = response.json();
-
-    if (!response.ok) {
-      setErr(json.err);
+    try {
+      const res = await fetch(
+        "http://localhost:3007/api/transcript/request/official/6413061cef21d3fc526c93bc",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: inputValue }),
+          credentials: "include",
+          mode: "cors",
+        });
+         const data = await res.json();
+    if (data.success === true) {
+      toast.success("Request Sent!");
+      navigate('/dashboard');
     }
-    if (response.ok) {
-      setErr(null);
-      setInputValue("");
-      alert("YOUR REQUEST HAS BEEN SENT");
+
+    } catch (error) {
+      toast.error("An unexpected error occurred- Try again later");
+      navigate('/dashboard');
     }
   };
 
@@ -66,16 +68,6 @@ function GeneratePDF() {
           Submit
         </button>
 
-        <div className="pdf-preview">
-          {filePreview && (
-            <embed
-              src={filePreview}
-              type="application/pdf"
-              width="100%"
-              height="600px"
-            />
-          )}
-        </div>
       </div>
     </div>
   );

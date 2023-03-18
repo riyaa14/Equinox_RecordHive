@@ -1,34 +1,61 @@
-import React from 'react';
+import React , { useEffect, useState}  from 'react';
+import {useNavigate } from 'react-router-dom';
 
 function ProfileForm() {
+
+  const navigate = useNavigate();
+  const [user, setUser] = useState();
+
+
+  async function getUser() {
+    const res = await fetch("http://localhost:3007/api/user/whoami", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        //"Access-Control-Allow-Origin": "*", // Required for CORS support to work
+      },
+      credentials: "include",
+    });
+    const data = await res.json();
+    if (data.success === true) {
+      setUser(data.user);
+    } else {
+      navigate("/Login");
+    }
+  }
+
+  useEffect(() => {
+    getUser();
+  });
+
   return (
     <div>
       <div className="flex-container1" >
       <div className="left">
         <label htmlFor="enrollment-no">Enrollment No:</label>
-        <input type="text" id="enrollment-no" name="enrollment-no" />
+        <input type="text" id="enrollment-no" name="enrollment-no" placeholder={user ? user.enrollNo : ""} disabled />
         <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" />
+        <input type="text" id="name" name="name" placeholder={user ? user.name : ""} disabled />
         <label htmlFor="gender">Gender:</label>
-        <select id="gender" name="gender">
+        <select id="gender" name="gender" placeholder="Female" disabled>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
         <label htmlFor="category">Category:</label>
-        <select id="category" name="category">
+        <select id="category" name="category" placeholder="General" disabled>
           <option value="general">General</option>
           <option value="obc">OBC</option>
           <option value="sc">SC</option>
           <option value="st">ST</option>
         </select>
         <label htmlFor="region">Region:</label>
-        <input type="text" id="region" name="region" />
+        <input type="text" id="region" name="region" placeholder="New Delhi" disabled />
       </div>
       <div className="right">
         <div className="profile-icon"></div>
         <label htmlFor="dob">DOB:</label>
-        <input type="text" id="dob" name="dob" />
+        <input type="text" id="dob" name="dob" placeholder="12-09-2003" disabled />
         <label htmlFor="sub-category">Sub-Category:</label>
         <select id="sub-category" name="sub-category">
           <option value="none">None</option>
@@ -51,14 +78,14 @@ function ProfileForm() {
     </div>
     <div className="flex-container2">
       <div className="left">
-        <label htmlFor="enrollment-no">Degree:</label>
-        <input type="text" id="enrollment-no" name="enrollment-no" />
+        <label htmlFor="enrollment-no">Graduation Year:</label>
+        <input type="text" id="enrollment-no" name="enrollment-no" placeholder={user ? user.graduation_year : ""} disabled/>
         
       </div>
       <div className="right">
         
         <label htmlFor="dob">Branch:</label>
-        <input type="text" id="dob" name="dob" />
+        <input type="text" id="dob" name="dob" placeholder={user ? user.branch : ""} disabled />
         
         
       </div>
