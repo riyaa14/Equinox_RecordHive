@@ -293,13 +293,13 @@ export const forgotPassword = async (req, res) => {
       });
     }
 
-    const resetPasswordToken = User.getResetPasswordToken();
+    const resetPasswordToken = user.getResetPasswordToken();
 
     await user.save();
 
     const resetUrl = `${req.protocol}://${req.get(
       "host"
-    )}/api/user/password/reset/${resetPasswordToken}`;
+    )}/password/reset/${resetPasswordToken}`;
 
     const message = `Reset Your Password by clicking on the link below: \n\n ${resetUrl}`;
 

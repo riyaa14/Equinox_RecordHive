@@ -45,7 +45,7 @@ export const getGraduationTrackerByStudentId = async (req, res) => {
       return res.status(404).json({ error: "Graduation tracker not found" });
     }
 
-    console.log(graduationTracker);
+    //console.log(graduationTracker);
 
     const requiredCoursesIds = graduationTracker
       .map((document) => document.graduationRequirementId.courses)
@@ -53,8 +53,8 @@ export const getGraduationTrackerByStudentId = async (req, res) => {
 
     const coursesCompleted = graduationTracker[0].coursesCompleted;
 
-    console.log(requiredCoursesIds);
-    console.log(coursesCompleted);
+    //console.log(requiredCoursesIds);
+    //console.log(coursesCompleted);
 
     // Check if all required courses are completed
 
@@ -65,8 +65,8 @@ export const getGraduationTrackerByStudentId = async (req, res) => {
       course._id.toString()
     );
 
-    console.log(requiredCourseIds);
-    console.log(completedCourseIds);
+    //console.log(requiredCourseIds);
+    //console.log(completedCourseIds);
 
     if (
       requiredCourseIds.every((courseId) =>
@@ -84,6 +84,7 @@ export const getGraduationTrackerByStudentId = async (req, res) => {
         missingCourseIds.map((courseId) => Course.findById(courseId))
       );
       const missingCourseNames = missingCourses.map((course) => course.name);
+      //console.log(missingCourseNames);
       res.json({
         success: true,
         message: `Incomplete: ${missingCourseNames.join(", ")}`,
