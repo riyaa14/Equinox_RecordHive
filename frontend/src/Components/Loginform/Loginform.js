@@ -40,7 +40,7 @@ const Loginform = () => {
         if(data.user.role==="Admin"){
           navigate("/StudentRecords");
         } else {
-          navigate("/StudentDash");
+          navigate("/StudentProfile");
         }
       }
       if (data.success !== true) {

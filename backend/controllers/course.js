@@ -297,7 +297,8 @@ export const addStudentMarks = async (req, res) => {
       (course) => course.course.toString() === courseId
     );
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////// STACK USAGE to update completed courses //////////////////////////////////////////
+    //////////// of a student if it fulfils the required credits////////////////////////////////////////////////////////////////////////
     if (courseIndex >= 0) {
       user.courseTrack[courseIndex].marks = marks;
       user.courseTrack[courseIndex].creditSecured = creditSecured;

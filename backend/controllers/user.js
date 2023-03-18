@@ -76,7 +76,7 @@ export const registerS = async (req, res) => {
 export const whoami = async (req, res) => {
   try {
     const cookie = req.headers.cookie;
-    //console.log(cookie);
+    //console.log(req.headers);
     res.set("Access-Control-Allow-Origin", "http://localhost:3000");
     res.set("Access-Control-Allow-Credentials", "true");
     //res.setHeader("Access-Control-Allow-Credentials", true);
@@ -293,13 +293,13 @@ export const forgotPassword = async (req, res) => {
       });
     }
 
-    const resetPasswordToken = User.getResetPasswordToken();
+    const resetPasswordToken = user.getResetPasswordToken();
 
     await user.save();
 
     const resetUrl = `${req.protocol}://${req.get(
       "host"
-    )}/api/user/password/reset/${resetPasswordToken}`;
+    )}/password/reset/${resetPasswordToken}`;
 
     const message = `Reset Your Password by clicking on the link below: \n\n ${resetUrl}`;
 

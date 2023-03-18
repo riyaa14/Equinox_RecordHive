@@ -13,11 +13,15 @@ import SemesterRecords from "./Pages/SemesterRecords";
 import Dashboard from "./Pages/Dashboard";
 import TranscriptRequestSubmit from "./Pages/TranscriptRequestSubmit";
 import TranscriptGenerate from "./Pages/TranscriptGenerate";
+import ForgotPassword from "./Pages/ForgotPassword";
+import ResetPassword from "./Pages/ResetPassword";
 function App() {
   const location = useLocation();
   return (
     <>
-      {location.pathname !== "/login" && location.pathname !== "/" && (<Sidebar />)}
+      {location.pathname !== "/" && location.pathname !== "/login" && (
+        <Sidebar />
+      )}
       <Routes>
         <Route path="/" element={<LoginForm />} />
         <Route path="/login" element={<LoginForm />} />
@@ -29,6 +33,8 @@ function App() {
         <Route path="/request" element={<TranscriptRequestSubmit />} />
         <Route path="/generate" element={<TranscriptGenerate />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/forgot/password" element={<ForgotPassword />} />
+        <Route path="/password/reset/:token" element={<ResetPassword />} />
       </Routes>
     </>
   );
