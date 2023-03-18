@@ -451,10 +451,14 @@ form.error {
   
     width:100%;
     height:100vh;
-    background-image: url('./assets/otherpgsbg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top: 0;
+    ;
+    height:100000vh;
+    width:100%;
+  height:500vh;
+  background-image: url('./assets/otherpgsbg.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  margin-top:15%
   
 }
 /*GRADUATION REQUIREMENTS*/
