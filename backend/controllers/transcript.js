@@ -54,54 +54,114 @@ export const generateUnofficialTranscript = async (req, res) => {
       message: req.body.message,
     });
 
+    
+    //console.log(transcript);
     // Save the transcript to the database
-    await transcript.save();
-
+   
+      await transcript.save();
+    
+  
     const ss = await User.findById(student._id);
     ss.transcript.unshift(transcript._id);
     await ss.save();
 
-    // Create a new PDF document
+
     const doc = new PDFDocument();
+  const fileName = `${student.name.replace(" ", "_")}_transcript.pdf`;
+  const filePath = `./${fileName}`;
+  
+  doc.pipe(fs.createWriteStream(filePath));
 
-    const fileName = `${student.name.replace(" ", "_")}_transcript.pdf`;
-    //const filePath = path.join(__dirname, '..', 'public', 'pdf', fileName);
-    const filePath =
-      "C:/Users/deepak kumar/OneDrive/Documents/GitHub/SMP/public/pdf/";
+ // Add student information to the PDF
+ doc.fontSize(20).text(`${student.name} Transcript`, { align: "center" });
+ doc.moveDown();
+ doc.fontSize(12).text(`Enrollment Number: ${student.enrollNo}`);
+ doc.moveDown();
+ doc.fontSize(12).text(`GPA: ${gpa.toFixed(2)}`);
 
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+ // Add course information to the PDF
+ doc.moveDown();
+ doc.fontSize(14).text("Courses");
+ doc.moveDown();
+ for (let i = 0; i < student.courseTrack.length; i++) {
+   const item = student.courseTrack[i];
+   doc
+     .fontSize(12)
+     .text(
+       `${i + 1}. ${item.course.name} (${item.course.code}) - ${item.marks}`
+     );
+   doc.moveDown();
+ }
 
-    doc.pipe(res);
+ // End the PDF document and save it to the file system
+ doc.end();
 
-    // Add student information to the PDF
-    doc.fontSize(20).text(`${student.name} Transcript`, { align: "center" });
-    doc.moveDown();
-    doc.fontSize(12).text(`Enrollment Number: ${student.enrollNo}`);
-    doc.moveDown();
-    doc.fontSize(12).text(`GPA: ${gpa.toFixed(2)}`);
+  
+ res.download(filePath);
 
-    // Add course information to the PDF
-    doc.moveDown();
-    doc.fontSize(14).text("Courses");
-    doc.moveDown();
-    for (let i = 0; i < student.courseTrack.length; i++) {
-      const item = student.courseTrack[i];
-      doc
-        .fontSize(12)
-        .text(
-          `${i + 1}. ${item.course.name} (${item.course.code}) - ${item.marks}`
-        );
-      doc.moveDown();
-    }
 
-    // End the PDF document and save it to the file system
-    doc.end();
-    doc.on("end", () => {
-      // Send the file as a response
-      const stream = fs.createReadStream(filePath);
-      stream.pipe(res);
-    });
+
+    //////////////////////////////////////////////////////////////////////////|||||||||||||||||||||||||||||||||||||||||||||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    // Create a new PDF document
+    //const doc = new PDFDocument();
+
+    //console.log("bjb")
+    
+
+
+    // const filePath5 = 'C:/Users/deepak kumar/OneDrive/Documents/GitHub/SMP/public/pdf/';
+    
+    // fs.stat(filePath5, (err, stats) => {
+    //   if (err) {
+    //     console.error(`Cannot get stats for file at ${filePath}: ${err.code}`);
+    //   } else {
+    //     console.log(`File at ${filePath} is ${stats.mode.toString(8)}`);
+    //   }
+    // });
+    
+
+    // const fileName = `${student.name.replace(" ", "_")}_transcript.pdf`;
+    // const filePath = path.join(process.cwd(), '..', 'public', 'pdf', fileName);
+    //const filePath = path.join(process.cwd(), 'public', 'pdf', fileName);
+// console.log('File path:', filePath);
+
+//     res.setHeader("Content-Type", "application/pdf");
+//     res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+
+//     doc.pipe(res);
+
+//     // Add student information to the PDF
+//     doc.fontSize(20).text(`${student.name} Transcript`, { align: "center" });
+//     doc.moveDown();
+//     doc.fontSize(12).text(`Enrollment Number: ${student.enrollNo}`);
+//     doc.moveDown();
+//     doc.fontSize(12).text(`GPA: ${gpa.toFixed(2)}`);
+
+//     // Add course information to the PDF
+//     doc.moveDown();
+//     doc.fontSize(14).text("Courses");
+//     doc.moveDown();
+//     for (let i = 0; i < student.courseTrack.length; i++) {
+//       const item = student.courseTrack[i];
+//       doc
+//         .fontSize(12)
+//         .text(
+//           `${i + 1}. ${item.course.name} (${item.course.code}) - ${item.marks}`
+//         );
+//       doc.moveDown();
+//     }
+
+//     // End the PDF document and save it to the file system
+//     doc.end();
+
+//     doc.on("end", () => {
+//       // Send the file as a response
+//       const stream = fs.createReadStream(filePath);
+//       stream.pipe(res);
+//     });
+
+
+    /////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\||||||||||||||||||||||||||||||||||||||||||||||||||
   } catch (error) {
     res.status(500).json({
       success: false,

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import myImage from '../assets/upload.png';
+import toast from 'react-hot-toast';
 
 
 function GeneratePDF() {
@@ -10,11 +11,41 @@ function GeneratePDF() {
     setInputValue(event.target.value);
   }
 
-  function generatePdf() {
-    // Send a request to the backend to generate the PDF
-    // and receive the PDF as a blob or base64 encoded string
-    // setFilePreview with the generated PDF data
+  async function generatePdf() {
+    try {
+      const response = await fetch(`http://localhost:3007/api/transcript/unofficial/6413061cef21d3fc526c93bc`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ message: inputValue }),
+        credentials: "include",
+        mode: "cors",
+      });
+      const blob = await response.blob();
+    const fileURL = URL.createObjectURL(blob);
+    setFilePreview(fileURL);
+    const a = document.createElement("a");
+    a.href = fileURL;
+    a.download = "transcript.pdf";
+    a.click();
+
+      if (!response.success) {
+        throw new Error('Failed to generate PDF');
+      }
+    } catch (error) {
+      toast.error("");
+    }
   }
+
+  useEffect(() => {
+    return () => {
+      if (filePreview) {
+        URL.revokeObjectURL(filePreview);
+      }
+    };
+  }, [filePreview]);
 
   return (
     <div className="file-container">

@@ -26,7 +26,7 @@ const TranscriptSchema = new mongoose.Schema(
       },
       message:{
         type:String,
-        required: [true, "Enter your reson for issuing transcript"],
+        //required: [true, "Enter your reson for issuing transcript"],
       }
   
     }
