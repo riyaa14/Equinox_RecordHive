@@ -46,7 +46,7 @@ const CourseForm = (props) => {
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
             close
           </button>
-          <h3>ADD A NEW COURSE</h3>
+          <h3 style={{ color: "white" }}>ADD A NEW COURSE</h3>
 
           <label>COURSE NAME:</label>
           <input

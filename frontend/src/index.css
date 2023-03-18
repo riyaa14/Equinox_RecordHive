@@ -192,6 +192,7 @@ h6{
 .student-record {
   background: #fff;
   border-radius: 4px;
+  width: 500px;
   margin: 20px 20px;
   padding: 20px;
   position: relative;
@@ -274,16 +275,19 @@ form.error {
 
 .popup-inner{
   border-style: solid;
-  border-width: 10px;
+  border-width: 1px;
   border-color: white;
-
+  background-image: url('./assets/login2bg.jpg');
   position: absolute;
   text-align: center;
   align-items: center;
   justify-content: center;
   padding: 40px;
   max-width: 900px;
-  background-color: #FFF;
+}
+
+.popup-inner label{
+  color: white;
 }
 
 .popup-inner .close-btn{
@@ -423,6 +427,7 @@ form.error {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  width: 500px;
 }
 .transcript-requests-cards h4 {
   margin: 0 0 5px 0;
@@ -450,11 +455,11 @@ form.error {
 .otherspgsbg{
   
     width:100%;
-    height:100vh;
+    height:1000vh;
     background-image: url('./assets/otherpgsbg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 0;
+    margin-top: 0px;
   
 }
 /*GRADUATION REQUIREMENTS*/
