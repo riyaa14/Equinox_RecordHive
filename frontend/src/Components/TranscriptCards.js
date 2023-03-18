@@ -4,7 +4,7 @@ function TranscriptCards(props) {
   return (
     <div>
       <div className="transcript-requests-cards">
-        <h4>Student Id: {props.studentName}</h4>
+        <h4>Student Id: {props.studentId}</h4>
         <p>Semester: {props.semesterId}</p>
         <p>Type: {props.status}</p>
         <p>message: {props.message}</p>

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -35,65 +34,77 @@ function Sidebar() {
       </div>
       <div className="divider"></div>
       <div
-        className={`profile-option ${selectedButton === 'dashboard' ? 'selected' : ''}`}
+        className={`profile-option ${
+          selectedButton === "dashboard" ? "selected" : ""
+        }`}
         id="dashboard"
-        onClick={() => handleButtonClick('dashboard')}
+        onClick={() => handleButtonClick("dashboard")}
       >
         <span className="button-icon">
-          <i className="fa fa-dashboard" style={{ fontSize: '18px' }}></i>
+          <i className="fa fa-dashboard" style={{ fontSize: "18px" }}></i>
         </span>
-        <span style={{ marginLeft: '25px' }}>
+        <span style={{ marginLeft: "25px" }}>
           <Link to="/dashboard" className="atag">
             Dashboard
           </Link>
         </span>
       </div>
       <div
-        className={`profile-option ${selectedButton === 'profile' ? 'selected' : ''}`}
+        className={`profile-option ${
+          selectedButton === "profile" ? "selected" : ""
+        }`}
         id="profile"
-        onClick={() => handleButtonClick('profile')}
+        onClick={() => handleButtonClick("profile")}
       >
         <span className="button-icon">
-          <i className="fa fa-user" style={{ fontSize: '18px' }}></i>
+          <i className="fa fa-user" style={{ fontSize: "18px" }}></i>
         </span>
-        <span style={{ marginLeft: '30px' }}>
-          <Link to="/profile" className="atag">
+        <span style={{ marginLeft: "30px" }}>
+          <Link to="/StudentProfile" className="atag">
             Profile
           </Link>
         </span>
       </div>
       <div
-        className={`profile-option ${selectedButton === 'transcript' ? 'selected' : ''}`}
+        className={`profile-option ${
+          selectedButton === "transcript" ? "selected" : ""
+        }`}
         id="transcript"
-        onClick={() => handleButtonClick('transcript')}
+        onClick={() => handleButtonClick("transcript")}
       >
         <span className="button-icon">
-          <i className="fa fa-file-text" style={{ fontSize: '18px' }}></i>
+          <i className="fa fa-file-text" style={{ fontSize: "18px" }}></i>
         </span>
-        <span style={{ marginLeft: '23px' }}>
+        <span style={{ marginLeft: "23px" }}>
           <Link to="/generate" className="atag">
             Generate Transcript
           </Link>
         </span>
       </div>
       <div
-        className={`profile-option ${selectedButton === 'request' ? 'selected' : ''}`}
+        className={`profile-option ${
+          selectedButton === "request" ? "selected" : ""
+        }`}
         id="request"
-        onClick={() => handleButtonClick('request')}
+        onClick={() => handleButtonClick("request")}
       >
         <span className="button-icon">
-          <i className="fa fa-address-card" style={{ fontSize: '18px' }}></i>
+          <i className="fa fa-address-card" style={{ fontSize: "18px" }}></i>
         </span>
-        <span className="option-left" style={{ marginLeft: '18px' }}>
+        <span className="option-left" style={{ marginLeft: "18px" }}>
           <Link to="/request" className="atag">
             Request Transcript
           </Link>
         </span>
       </div>
-      <div
-      >
-        <span className="option-left" style={{ marginLeft: '18px' }}>
-          <Link to="/logout" className="atag" Id="logoutbutton" onClick={handleLogOut} >
+      <div>
+        <span className="option-left" style={{ marginLeft: "18px" }}>
+          <Link
+            to="/logout"
+            className="atag"
+            Id="logoutbutton"
+            onClick={handleLogOut}
+          >
             LOGOUT
           </Link>
         </span>

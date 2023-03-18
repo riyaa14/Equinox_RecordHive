@@ -31,7 +31,7 @@ export const createSemester = async (req, res) => {
 //Delete Semester ---admin
 export const deleteSemester = async (req, res) => {
   try {
-    const sem = await Semester.findById(req.params.semesterId);
+    const sem = await Semester.findByIdAndDelete(req.params.semesterId);
 
     if (!sem) {
       return res.status(404).json({
@@ -39,8 +39,6 @@ export const deleteSemester = async (req, res) => {
         message: "Semester not found",
       });
     }
-
-    await sem.remove();
 
     res.status(200).json({
       success: true,

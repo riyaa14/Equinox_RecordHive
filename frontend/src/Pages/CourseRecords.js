@@ -79,6 +79,7 @@ function CourseRecords() {
               return (
                 <CourseCards
                   key={course._id}
+                  courseId={course._id}
                   name={course.name}
                   desc={course.desc}
                   code={course.code}
