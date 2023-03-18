@@ -456,14 +456,13 @@ form.error {
   
     width:100%;
     height:100vh;
-    ;
     height:100000vh;
     width:100%;
   height:500vh;
   background-image: url('./assets/otherpgsbg.jpg');
   background-repeat: no-repeat;
   background-size:cover;
-  margin-top:15%
+  margin-top:15%;
     height:1000vh;
     background-image: url('./assets/otherpgsbg.jpg');
     background-repeat: no-repeat;
