@@ -45,8 +45,7 @@ const SemesterForm = (props) => {
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
             close
           </button>
-          <h3>ADD A NEW SEMESTER</h3>
-
+          <h3 style={{ color: "white" }}>ADD A NEW SEMESTER</h3>
           <label>SEMESTER NUMBER:</label>
           <input
             type="text"

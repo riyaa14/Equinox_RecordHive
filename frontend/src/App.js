@@ -24,7 +24,6 @@ function App() {
       )}
       <Routes>
         <Route path="/" element={<LoginForm />} />
-        
         <Route path="/StudentRecords" element={<StudentRecords />} />
         <Route path="/CourseRecords" element={<CourseRecords />} />
         <Route path="/SemesterRecords" element={<SemesterRecords />} />
