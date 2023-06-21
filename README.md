@@ -57,6 +57,9 @@ All of the above features have been thoroughly tested and verified to be functio
 - To add a course to a student's course history, a stack operation push is used, which ensures that the most recent course appears on top of the list. This maintains a chronological order and provides an organised record of the student's academic progress.
 Using stacks in these functions improves efficiency and allows for easier manipulation and maintenance of course information.
 
+![image](https://github.com/riyaa14/Equinox_RecordHive/assets/96983874/c05a2bf5-0796-4ed7-ae06-6e294523755d)
+
+
 ## CONTRIBUTION
 
 Instructions on how others can contribute to the project, including information on how to report issues, submit feature requests, and contribute code:
