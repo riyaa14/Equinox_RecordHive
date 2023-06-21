@@ -68,7 +68,7 @@ Instructions on how others can contribute to the project, including information 
 
 ## CONTACT
 If you have any questions or feedback regarding this project, please feel free to contact us using one of the following methods:
-- Email: himanshi142btit21@igdtuw.ac.in
-- GitHub: github.com/himanshi4902
+- Email: riyag1452003@gmail.com
+- GitHub: github.com/riyaa14
 
   We would love to hear from you and are open to suggestions, improvements, and collaborations!
