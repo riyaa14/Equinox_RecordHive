@@ -14,7 +14,7 @@ To install and run the project:
 - Install Node.js and MongoDB on your machine.
 - Clone the project repository and navigate to the project directory.
 - Install dependencies using `npm install`.
-- Create a.env file with environment variables.
+- Create a .env file with environment variables.
 - Start the server using `npm start` for frontend and `npm run dev` for backend
 - Open http://localhost:3000 in a web browser to see the running application.
 
@@ -29,15 +29,6 @@ To install and run the project:
 8. Graduation requirement tracking to ensure students meet all requirements for graduation
 9. Ability to generate unofficial transcripts with all relevant information
 10. Ability to request official transcripts and send them to the appropriate office
-
-All of the above features have been thoroughly tested and verified to be functioning properly. Tests include:
-- Verification of registered user access and authorization to restricted pages
-- Testing of profile creation, editing, and deletion to ensure proper saving and removal of user data
-- Verification of accurate creation, updating, and deletion of student, course, and semester records
-- Testing of stack implementation for tracking course history, including adding and removing courses
-- Verification of accurate calculation of GPA and academic standing
-- Testing of graduation requirement tracking and updating to reflect changes
-- Verification of accurate generation of unofficial and official transcripts with all required information.
 
 ## TECHNOLOGIES USED
 - MongoDB: a document-based NoSQL database used to store and manage data in the project.
@@ -58,16 +49,6 @@ All of the above features have been thoroughly tested and verified to be functio
 Using stacks in these functions improves efficiency and allows for easier manipulation and maintenance of course information.
 
 ![image](https://github.com/riyaa14/Equinox_RecordHive/assets/96983874/c05a2bf5-0796-4ed7-ae06-6e294523755d)
-
-
-## CONTRIBUTION
-
-Instructions on how others can contribute to the project, including information on how to report issues, submit feature requests, and contribute code:
-1. Fork the repository
-2. Create a new branch
-3. Make your changes and commit them
-4. Push your changes to your forked repository
-5. Submit a pull request to the original repository
 
 ## CONTACT
 If you have any questions or feedback regarding this project, please feel free to contact us using one of the following methods:
